@@ -14,8 +14,4 @@ six==1.10.0
 Werkzeug==0.11.10
 requests==2.18.4
 lxml
-wikipedia
-pytube
 flask-wtf
-request
-python-firebase
