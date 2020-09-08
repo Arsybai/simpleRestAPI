@@ -1,21 +1,23 @@
 import requests, re, json
 from bs4 import BeautifulSoup
 from re import match
+from re import match
+from urllib.parse import urlparse
 
 def img(query):
-	imagedata = []
-	link = 'https://www.google.co.in/search?q={}&source=lnms&tbm=isch'.format(query)
-	soup = requests.get(link)
-	soup = BeautifulSoup(soup.content,"lxml")
-	for clu in soup.findAll('img'):
-		if 'textinput' not in clu['src']:
-			imagedata.append(clu['src'])
-	result = {
-		'status':'OK',
-		'result':imagedata
-		}
-	return(result)
-	
+    Image =[]
+    url = 'https://image.baidu.com/search/flip?tn=baiduimage&ie=utf-8&word='+query+'&ct=201326592&v=flip'
+    result = requests.get(url)
+    html = result.text
+    pic_url = re.findall('"objURL":"(.*?)",',html,re.S)
+    for each in pic_url:
+        Image.append(each)
+    urel ={
+        	"status": "OK",
+        	"linkURL": "%s" %(Image)
+    }
+    return(urel)
+
 def instaprofile(user):
     uReq = requests
     bSoup = BeautifulSoup
