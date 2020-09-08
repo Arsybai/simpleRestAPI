@@ -20,9 +20,8 @@ def img(query):
     }
     return(urel)
     
-def searchGoogle(query):
-		wow = urllib.parse.quote(query)
-		URL = f"https://google.com/search?q={wow}"
+def searchGoogle(query);
+		URL = f"https://google.com/search?q={query}"
 		headers = {"user-agent": hander}
 		resp = requests.get(URL, headers=headers)
 		if resp.status_code == 200:
