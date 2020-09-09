@@ -13,10 +13,10 @@ def home():
 def rest_image():
 	this_query = request.args['query']
 	this_rest = scrap.img(this_query)
-	return json.dumps(this_rest, indent=4, sort_keys=True)
+	return json.dumps(this_rest, indent=4)
 	
-@app.route('/searchGoogle',methods=['POST','GET'])
-def rest_Google():
-	this_search = request.args['search']
-	this_rest = scrap.searchGoogle(this_search)
+@app.route('/instagram',methods=['POST','GET'])
+def rest_insta():
+	this_user = request.args['username']
+	this_rest = scrap.instaprofile(this_user)
 	return json.dumps(this_rest, indent=4)
