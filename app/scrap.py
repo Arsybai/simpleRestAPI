@@ -31,7 +31,16 @@ def img(query):
     	"Status": "OKE COK___!"
 	}
 	return(ret)
-    
+
+def randomimg(query):
+	link = f"https://source.unsplash.com/random/900×700/?{query}"
+	result = {
+		"linkUrl": link,
+		"creator": "geo",
+		"status": "OKE COK___!"
+	}
+	return(result)
+
 def instaprofile(user):
     uReq = requests
     bSoup = BeautifulSoup
