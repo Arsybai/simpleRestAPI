@@ -19,15 +19,16 @@ def img(query):
 	    },
 	    headers = {
     		'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36'
-    	}
+	    }
 	)
 	response = link.json().get('data').get('result').get('items')
 	urls = [link.get('media') for link in response]
 	for cok in urls:
 	   imagedata.append(cok)
 	ret = {
-    	'linkUrl': "%s"%(imagedata),
-    	'creator': 'geo, rey and Fino'
+    	"linkUrl": "%s"%(imagedata),
+    	"creator": "geo, rey and Fino",
+    	"Status": "OKE COK___!"
 	}
 	return(ret)
     
