@@ -80,7 +80,7 @@ def artiName(nama):
 		
 def goSearch(user):
     headers = {"user-agent" : hander}
-    resp = requests.get("https://google.com/search?q=ayam", headers=headers)
+    resp = requests.get(f"https://google.com/search?q={user}", headers=headers)
     if resp.status_code == 200:
     	soup = BeautifulSoup(resp.content, "html.parser")
     	results = []
