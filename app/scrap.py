@@ -63,7 +63,7 @@ def artiName(nama):
 	try:
 		dsa ="http://primbon.com/arti_nama.php?nama1={}&proses=+Submit%21+".format(nama)
 		response = requests.get(dsa, headers=headers).text
-		anu = line.getStr(response, '<b>ARTI NAMA</b><br><br>', '<TABLE>')
+		anu = getStr(response, '<b>ARTI NAMA</b><br><br>', '<TABLE>')
 		text=str(anu).replace("<b><i>",": ").replace("</i></b>","").replace("<br><br>","").replace(".<br><br>","").replace("memiliki arti:","")
 		result = {
 			"result":{
