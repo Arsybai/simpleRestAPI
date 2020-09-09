@@ -75,7 +75,7 @@ def artiName(nama):
 		}
 		return(result)
 	except:
-		result = {"linkUrl": "Error info id Iine denmas_geo"}
+		result = {"result": "Error info id Iine denmas_geo"}
 		return(result)
 def instaprofile(user):
     uReq = requests
