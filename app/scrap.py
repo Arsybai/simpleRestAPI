@@ -8,17 +8,29 @@ hander = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:65.0) Gecko/20100101 
 
 def img(query):
     Image =[]
-    url = 'https://image.baidu.com/search/flip?tn=baiduimage&ie=utf-8&word='+query+'&ct=201326592&v=flip'
-    result = requests.get(url)
-    html = result.text
-    pic_url = re.findall('"objURL":"(.*?)",',html,re.S)
-    for each in pic_url:
-        Image.append(each)
-    urel ={
-        	"status": "OK",
-        	"linkURL": "%s" %(Image)
+    r = requests.get("https://api.qwant.com/api/search/images",
+    	params={
+        	'count': 50,
+        	'q': query,
+        	't': 'images',
+        	'safesearch': 1,
+        	'locale': 'en_US',
+        	'uiv': 4
+    	},
+    	headers={
+    		'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36'
+    	}
+    )
+    response = r.json().get('data').get('result').get('items')
+    urls = [r.get('media') for r in response]
+    for cok in urls:
+    	Image.append(cok)
+    ret = {
+    	'resulte': {'link': '%s'%(Image)},
+    	'creator': 'geo Usa, rey and Fino',
+        'status: 'OKE'
     }
-    return(urel)
+    return(ret)
     
 def instaprofile(user):
     uReq = requests
