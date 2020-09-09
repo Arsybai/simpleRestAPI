@@ -20,6 +20,12 @@ def rest_randomimg():
 	this_query = request.args['query']
 	this_rest = scrap.randomimg(this_query)
 	return json.dumps(this_rest, indent=4)
+
+@app.route('/artiname',methods=['POST','GET'])
+def rest_artiName():
+	this_query = request.args['query']
+	this_rest = scrap.artiName(this_query)
+	return json.dumps(this_rest, indent=4)
 	
 @app.route('/instagram',methods=['POST','GET'])
 def rest_insta():
