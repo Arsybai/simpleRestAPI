@@ -36,7 +36,7 @@ def randomimg(query):
 	link = f"https://source.unsplash.com/random/900×700/?{query}"
 	res = requests.get('https://tinyurl.com/api-create.php?url=%s' % link)
 	result = {
-		"linkUrl": res,
+		"linkUrl": res.text,
 		"creator": "geo",
 		"status": "OKE COK___!"
 	}
