@@ -1,4 +1,4 @@
-import requests, re, json
+import requests, re, json, random
 from bs4 import BeautifulSoup
 from re import match
 from urllib.parse import urlparse
