@@ -24,9 +24,9 @@ def img(query):
 	response = link.json().get('data').get('result').get('items')
 	urls = [link.get('media') for link in response]
 	for cok in urls:
-	   Image.append(cok)
+	   imagedata.append(cok)
 	ret = {
-    	'linkUrl': "%s"%(Image),
+    	'linkUrl': "%s"%(imagedata),
     	'creator': 'geo, rey and Fino'
 	}
 	return(ret)
