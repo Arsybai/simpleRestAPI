@@ -16,7 +16,7 @@ def img(query):
 			imagedata.append(clu['src'])
 	result = {
 		'status':'OK',
-                'creato': 'geo, rey, fino'
+		'creato': 'geo, rey, fino',
 		'result':imagedata
 		}
 	return(result)
