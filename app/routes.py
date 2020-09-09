@@ -26,6 +26,12 @@ def rest_artiName():
 	this_query = request.args['query']
 	this_rest = scrap.artiName(this_query)
 	return json.dumps(this_rest, indent=4)
+
+@app.route('/googlesearch',methods=['POST','GET'])
+def rest_goSearch():
+	this_query = request.args['query']
+	this_rest = scrap.goSearch(this_query)
+	return json.dumps(this_rest, indent=4)
 	
 @app.route('/instagram',methods=['POST','GET'])
 def rest_insta():
