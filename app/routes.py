@@ -52,5 +52,6 @@ def rest_sendNews():
 	this_text = request.args['text']
 	this_text1 = request.args['&text1']
 	this_text2 = request.args['&text2']
-	this_rest = scrap.sendNews(this_path, this_text, this_text2)
+	this_text3 = request.args['&text3']
+	this_rest = scrap.sendNews(this_path, this_text, this_text2, this_text3)
 	return json.dumps(this_rest, indent=4)
