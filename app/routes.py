@@ -39,15 +39,18 @@ def rest_textVideo():
 	this_rest = scrap.textVideo(this_query)
 	return json.dumps(this_rest, indent=4)
 
-@app.route('/photofun',methods=['POST','GET'])
+@app.route('/photofun/valentines_day',methods=['POST','GET'])
 def rest_sendValday():
 	this_path = request.args['path']
-	this_query = request.args['query']
+	this_query = request.args['&text']
 	this_rest = scrap.sendValday(this_path, this_query)
 	return json.dumps(this_rest, indent=4)
-
-@app.route('/instagram',methods=['POST','GET'])
-def rest_insta():
-	this_user = request.args['username']
-	this_rest = scrap.instaprofile(this_user)
+	
+@app.route('/photofun/breaking-news',methods=['POST','GET'])
+def rest_sendNews():
+	this_path = request.args['path']
+	this_text = request.args['text']
+	this_text1 = request.args['&text1']
+	this_text2 = request.args['&text2']
+	this_rest = scrap.sendNews(this_path, this_query)
 	return json.dumps(this_rest, indent=4)
