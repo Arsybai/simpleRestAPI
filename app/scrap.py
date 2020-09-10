@@ -119,3 +119,26 @@ def textVideo(query):
 	except:
 		result = {"result": "Error info id Iine denmas_geo"}
 		return(result)
+	
+	def sendValday(path,text):
+	try:
+		headers = {"user-agent": hander}
+		link = "https://m.photofunia.com/categories/valentines_day/valentine"
+		option = {'effect-form js-effect-form': 'input-file', 'image': path,'text': text, 'button-container': 'GO'}
+		ck = requests.post(link,option, headers=headers).text
+		cok = line.getStr(ck,'<div class="image full-height-container">','</div>')
+		urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_~@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', cok)
+		for url in urls:
+			mek = unquote(url).replace("%", "")
+			res = requests.get('https://tinyurl.com/api-create.php?url=%s' % mek)
+			result = {
+				"result": {
+					"linkUrl": res.text
+				},
+				"creator": "geo, rey",
+				"status": "OKE COK___!"
+			}
+		return(result)
+	except:
+		result = {"result": "Error info id Iine denmas_geo"}
+		return(result)
