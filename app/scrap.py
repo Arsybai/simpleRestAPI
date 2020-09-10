@@ -147,7 +147,7 @@ def sendNews(path,text,text2,text3):
 		link = "https://m.photofunia.com/categories/all_effects/breaking-news"
 		option = {'effect-form js-effect-form': 'input-file', 'image': path,'field text-field': 'text', 'channel': text,'title1': text2,'title2': text3, 'button-container': 'GO'}
 		usa = requests.post(link,option, headers=headers).text
-		cok = self.getStr(usa,'<div class="image full-height-container">','</div>')
+		cok = getStr(usa,'<div class="image full-height-container">','</div>')
 		urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_~@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', cok)
 		for url in urls:
 			mek = unquote(url).replace("%", "")
