@@ -95,3 +95,27 @@ def goSearch(query):
     		  }
     		  results.append(item)
     	return(results)
+def textVideo(query):
+	try:
+		headers = {"user-agent": hander}
+		link = "https://photooxy.com/league-of-legends/create-avatar-video-with-animation-lol-champions-180.html"
+		numku = str(random.randint(1, 23))
+		option = {'optionNumber_0': numku, 'optionNumber_1': '1', 'text_2': query, 'login': 'OK'}
+		geo = requests.post(link,option, headers=headers).text
+		recu = getStr(geo,'<div class="alert alert-info" role="alert">','<a class = "btn btn-default"')
+		requ = recu.split("-")[0]
+		urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_~@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', requ)
+		for url in urls:
+			mek = unquote(url).replace("%", "")
+			res = requests.get('https://tinyurl.com/api-create.php?url=%s' % mek)
+			result = {
+				"result": {
+					"linkUrl": res.text
+				},
+				"creator": "geo, rey",
+				"status": "OKE COK___!"
+			}
+		return(result)
+	except:
+		result = {"result": "Error info id Iine denmas_geo"}
+		return(result)
