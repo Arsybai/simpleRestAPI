@@ -78,9 +78,9 @@ def artiName(nama):
 		result = {"result": "Error info id Iine denmas_geo"}
 		return(result)
 		
-def goSearch(user):
+def goSearch(query):
     headers = {"user-agent" : hander}
-    resp = requests.get(f"https://google.com/search?q={user}", headers=headers)
+    resp = requests.get(f"https://google.com/search?q={query}", headers=headers)
     if resp.status_code == 200:
     	soup = BeautifulSoup(resp.content, "html.parser")
     	results = []
@@ -94,4 +94,4 @@ def goSearch(user):
     		  	"link": link
     		  }
     		  results.append(item)
-    	return(result)
+    	return(results)
