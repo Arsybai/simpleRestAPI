@@ -33,6 +33,12 @@ def rest_goSearch():
 	this_rest = scrap.goSearch(this_query)
 	return json.dumps(this_rest, indent=4)
 	
+@app.route('/textavatar',methods=['POST','GET'])
+def rest_textVideo():
+	this_query = request.args['query']
+	this_rest = scrap.textVideo(this_query)
+	return json.dumps(this_rest, indent=4)
+
 @app.route('/instagram',methods=['POST','GET'])
 def rest_insta():
 	this_user = request.args['username']
