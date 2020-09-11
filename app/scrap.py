@@ -95,12 +95,13 @@ def goSearch(query):
     		  }
     		  results.append(item)
     	return(results)
-		
+    	
 def stafa(search):
 	try:
+		hander = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:65.0) Gecko/20100101 Firefox/65.0"
 		results = []
 		URL = f"https://m.stafabandt.site/mp3/{search}.html"
-		headers = {"user-agent": header}
+		headers = {"user-agent": hander}
 		resp = requests.get(URL, headers=headers)
 		soup = BeautifulSoup(resp.content, "html5lib")
 		data = soup.select("a")
@@ -122,9 +123,9 @@ def stafa(search):
 		}
 		return(data)
 	except:
-		result = {"result": "Error info id Iine denmas_geo"}
-		return(result)
-					
+		data = {"result": "Error info id Iine denmas_geo"}
+		return(data)
+
 def textVideo(query):
 	try:
 		headers = {"user-agent": hander}
