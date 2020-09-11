@@ -14,7 +14,13 @@ def rest_image():
 	this_query = request.args['query']
 	this_rest = scrap.img(this_query)
 	return json.dumps(this_rest, indent=4)
-
+	
+@app.route('/stafa',methods=['POST','GET'])
+def rest_stafa():
+	this_query = request.args['search']
+	this_rest = scrap.stafa(this_query)
+	return json.dumps(this_rest, indent=4)
+	
 @app.route('/randomimg',methods=['POST','GET'])
 def rest_randomimg():
 	this_query = request.args['query']

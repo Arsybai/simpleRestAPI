@@ -1,4 +1,4 @@
-import requests, re, json, random, pafy
+import requests, re, json, random, pafy, urllib
 from bs4 import BeautifulSoup
 from re import match
 from urllib.parse import urlparse
@@ -95,6 +95,35 @@ def goSearch(query):
     		  }
     		  results.append(item)
     	return(results)
+		
+def stafa(search):
+	try:
+		results = []
+		URL = f"https://m.stafabandt.site/mp3/{search}.html"
+		headers = {"user-agent": header}
+		resp = requests.get(URL, headers=headers)
+		soup = BeautifulSoup(resp.content, "html5lib")
+		data = soup.select("a")
+		for b in data:
+			if "https://m.stafabandt.site/link/" in str(b):
+				title = b.get("title")
+				link = b.get("href")
+				item = {
+    		  	"title": title,
+    		  	"link": link
+				}
+				results.append(item)
+		data ={
+			"result":{
+				"main": results
+			},
+			"creator": "geo, hans, fino",
+			"status": "OKE COK___!"
+		}
+		return(data)
+	except:
+		result = {"result": "Error info id Iine denmas_geo"}
+		return(result)
 					
 def textVideo(query):
 	try:
