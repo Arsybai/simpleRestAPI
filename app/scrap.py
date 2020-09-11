@@ -204,6 +204,7 @@ def sendNews(path,text,text2,text3):
 		return(result)
 def sendSummer(path,path1,text):
 	try:
+		hander = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:65.0) Gecko/20100101 Firefox/65.0"
 		headers = {"user-agent": hander}
 		link = "https://m.photofunia.com/categories/photography/summer-diary"
 		option = {
@@ -232,6 +233,7 @@ def sendSummer(path,path1,text):
 		return(result)
 def sendParis(path,text):
 	try:
+		hander = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:65.0) Gecko/20100101 Firefox/65.0"
 		headers = {"user-agent": hander}
 		link = "https://m.photofunia.com/categories/photography/photography/memories_of_paris"
 		option = {
@@ -260,10 +262,13 @@ def sendParis(path,text):
 
 def sendClowers(path,text):
 	try:
+		hander = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:65.0) Gecko/20100101 Firefox/65.0"
 		headers = {"user-agent": hander}
 		link = "https://m.photofunia.com/categories/photography/photography/flowers"
 		option = {
 			'effect-form js-effect-form': 'input-file',
+			'field imagelist-field': 'imagelist-collection',
+			'image ': 'https://cdn.photofunia.com/effects/flowers/resources/5kj3w6.jpg',
 			'image': path,
 			'text': text,
 			'button-container': 'GO'
