@@ -44,12 +44,34 @@ def rest_textVideo():
 	this_query = request.args['query']
 	this_rest = scrap.textVideo(this_query)
 	return json.dumps(this_rest, indent=4)
-
+	
 @app.route('/photofun/valentines_day',methods=['POST','GET'])
 def rest_sendValday():
 	this_path = request.args['path']
 	this_query = request.args['text']
 	this_rest = scrap.sendValday(this_path, this_query)
+	return json.dumps(this_rest, indent=4)
+	
+@app.route('/photofun/summer-diary',methods=['POST','GET'])
+def rest_sendSummer():
+	this_path = request.args['path']
+	this_path1 = request.args['path1']
+	this_query = request.args['text']
+	this_rest = scrap.sendSummer(this_path, this_path1, this_query)
+	return json.dumps(this_rest, indent=4)
+	
+@app.route('/photofun/flowers',methods=['POST','GET'])
+def rest_sendClowers():
+	this_path = request.args['path']
+	this_query = request.args['text']
+	this_rest = scrap.sendClowers(this_path, this_query)
+	return json.dumps(this_rest, indent=4)
+	
+@app.route('/photofun/memories_of_paris',methods=['POST','GET'])
+def rest_sendParis():
+	this_path = request.args['path']
+	this_query = request.args['text']
+	this_rest = scrap.sendParis(this_path, this_query)
 	return json.dumps(this_rest, indent=4)
 	
 @app.route('/photofun/breaking-news',methods=['POST','GET'])

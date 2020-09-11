@@ -94,7 +94,14 @@ def goSearch(query):
     		  	"link": link
     		  }
     		  results.append(item)
-    	return(results)
+    	data ={
+    		"result":{
+    			"main": results
+    		},
+    		"creator": "geo, hans, fino",
+    		"status": "OKE COK___!"
+    	}
+    	return(data)
     	
 def stafa(search):
 	try:
@@ -109,9 +116,10 @@ def stafa(search):
 			if "https://m.stafabandt.site/link/" in str(b):
 				title = b.get("title")
 				link = b.get("href")
+				res = requests.get('https://tinyurl.com/api-create.php?url=%s' % link)
 				item = {
     		  	"title": title,
-    		  	"link": link
+    		  	"link": res.text
 				}
 				results.append(item)
 		data ={
@@ -194,4 +202,86 @@ def sendNews(path,text,text2,text3):
 	except:
 		result = {"result": "Error info id Iine denmas_geo"}
 		return(result)
-	
+def sendSummer(path,path1,text):
+	try:
+		headers = {"user-agent": hander}
+		link = "https://m.photofunia.com/categories/photography/summer-diary"
+		option = {
+			'effect-form js-effect-form': 'input-file',
+			'image': path,
+			'image2': path1,
+			'text': text,
+			'button-container': 'GO'
+		}
+		ck = requests.post(link,option, headers=headers).text
+		cok = getStr(ck,'<div class="image full-height-container">','</div>')
+		urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_~@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', cok)
+		for url in urls:
+			mek = unquote(url).replace("%", "")
+			res = requests.get('https://tinyurl.com/api-create.php?url=%s' % mek)
+		result = {
+			"result":{
+				"linkUrl": res.text
+			},
+			"creator": "geo, rey, hans, fino",
+			"status": "OKE COK___!"
+		}
+		return(result)
+	except:
+		result = {"result": "Error info id Iine denmas_geo"}
+		return(result)
+def sendParis(path,text):
+	try:
+		headers = {"user-agent": hander}
+		link = "https://m.photofunia.com/categories/photography/photography/memories_of_paris"
+		option = {
+			'effect-form js-effect-form': 'input-file',
+			'image': path,
+			'text': text,
+			'button-container': 'GO'
+		}
+		ck = requests.post(link,option, headers=headers).text
+		cok = getStr(ck,'<div class="image full-height-container">','</div>')
+		urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_~@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', cok)
+		for url in urls:
+			mek = unquote(url).replace("%", "")
+			res = requests.get('https://tinyurl.com/api-create.php?url=%s' % mek)
+		result = {
+			"result":{
+				"linkUrl": res.text
+			},
+			"creator": "geo, rey, hans, fino",
+			"status": "OKE COK___!"
+		}
+		return(result)
+	except:
+		result = {"result": "Error info id Iine denmas_geo"}
+		return(result)
+
+def sendClowers(path,text):
+	try:
+		headers = {"user-agent": hander}
+		link = "https://m.photofunia.com/categories/photography/photography/flowers"
+		option = {
+			'effect-form js-effect-form': 'input-file',
+			'image': path,
+			'text': text,
+			'button-container': 'GO'
+		}
+		ck = requests.post(link,option, headers=headers).text
+		cok = getStr(ck,'<div class="image full-height-container">','</div>')
+		urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_~@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', cok)
+		for url in urls:
+			mek = unquote(url).replace("%", "")
+			res = requests.get('https://tinyurl.com/api-create.php?url=%s' % mek)
+		result = {
+			"result":{
+				"linkUrl": res.text
+			},
+			"creator": "geo, rey, hans, fino",
+			"status": "OKE COK___!"
+		}
+		return(result)
+	except:
+		result = {"result": "Error info id Iine denmas_geo"}
+		return(result)
