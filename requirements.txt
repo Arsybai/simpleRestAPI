@@ -1,6 +1,6 @@
 aniso8601==1.1.0
-beautifulsoup4==4.4.1
 bs4==0.0.1
+beautifulsoup4==4.6.3
 click==6.6
 Flask==1.0.0
 Flask-RESTful==0.3.5
@@ -13,5 +13,16 @@ pytz==2016.4
 six==1.10.0
 Werkzeug==0.11.10
 requests==2.18.4
+pafy==0.5.4
+urllib3==1.24.2
+youtube-dl==2018.10.5
+html5lib
 lxml
 flask-wtf
+hyper
+httpx
+qrcode
+ffmpeg-python
+pillow
+MoviePy
+python-magic
