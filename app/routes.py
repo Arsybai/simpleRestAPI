@@ -15,70 +15,9 @@ def rest_image():
 	this_rest = scrap.img(this_query)
 	return json.dumps(this_rest, indent=4)
 	
-@app.route('/stafa',methods=['POST','GET'])
-def rest_stafa():
-	this_query = request.args['search']
-	this_rest = scrap.stafa(this_query)
+@app.route('/instagram',methods=['POST','GET'])
+def rest_insta():
+	this_user = request.args['username']
+	this_rest = scrap.instaprofile(this_user)
 	return json.dumps(this_rest, indent=4)
 	
-@app.route('/randomimg',methods=['POST','GET'])
-def rest_randomimg():
-	this_query = request.args['query']
-	this_rest = scrap.randomimg(this_query)
-	return json.dumps(this_rest, indent=4)
-
-@app.route('/artiname',methods=['POST','GET'])
-def rest_artiName():
-	this_query = request.args['query']
-	this_rest = scrap.artiName(this_query)
-	return json.dumps(this_rest, indent=4)
-
-@app.route('/googlesearch',methods=['POST','GET'])
-def rest_goSearch():
-	this_query = request.args['query']
-	this_rest = scrap.goSearch(this_query)
-	return json.dumps(this_rest, indent=4)
-	
-@app.route('/textavatar',methods=['POST','GET'])
-def rest_textVideo():
-	this_query = request.args['query']
-	this_rest = scrap.textVideo(this_query)
-	return json.dumps(this_rest, indent=4)
-	
-@app.route('/photofun/valentines_day',methods=['POST','GET'])
-def rest_sendValday():
-	this_path = request.args['path']
-	this_query = request.args['text']
-	this_rest = scrap.sendValday(this_path, this_query)
-	return json.dumps(this_rest, indent=4)
-	
-@app.route('/photofun/summer-diary',methods=['POST','GET'])
-def rest_sendSummer():
-	this_path = request.args['path']
-	this_path1 = request.args['path1']
-	this_query = request.args['text']
-	this_rest = scrap.sendSummer(this_path, this_path1, this_query)
-	return json.dumps(this_rest, indent=4)
-	
-@app.route('/photofun/flowers',methods=['POST','GET'])
-def rest_sendClowers():
-	this_path = request.args['path']
-	this_query = request.args['text']
-	this_rest = scrap.sendClowers(this_path, this_query)
-	return json.dumps(this_rest, indent=4)
-	
-@app.route('/photofun/memories_of_paris',methods=['POST','GET'])
-def rest_sendParis():
-	this_path = request.args['path']
-	this_query = request.args['text']
-	this_rest = scrap.sendParis(this_path, this_query)
-	return json.dumps(this_rest, indent=4)
-	
-@app.route('/photofun/breaking-news',methods=['POST','GET'])
-def rest_sendNews():
-	this_path = request.args['path']
-	this_text = request.args['text']
-	this_text2 = request.args['text2']
-	this_text3 = request.args['text3']
-	this_rest = scrap.sendNews(this_path, this_text, this_text2, this_text3)
-	return json.dumps(this_rest, indent=4)
