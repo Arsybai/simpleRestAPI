@@ -1,8 +1,9 @@
-import requests, re, json, random, pafy, urllib, traceback, base64, urllib
+import requests, re, json, random, pafy, urllib, traceback, base64, urllib, urllib.request, urllib3, html5lib, codecs, string, os, six, ast
 from bs4 import BeautifulSoup
 from re import match
 from urllib.parse import urlparse
 from urllib.parse import quote, unquote, re
+from urllib.request import urlopen
 try:
     import urllib.request as urllib2
 except ImportError:
