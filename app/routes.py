@@ -26,7 +26,7 @@ def rest_stafa():
 def rest_VideoX():
 	this_query = request.args['search']
 	this_query1 = request.args['page']
-	this_rest = scrap.VideoX(this_query)
+	this_rest = scrap.VideoX(this_query,this_query1)
 	return json.dumps(this_rest, indent=4, sort_keys=True)
 	
 @app.route('/xdownload',methods=['POST','GET'])
