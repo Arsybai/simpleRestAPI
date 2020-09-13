@@ -11,11 +11,17 @@ MarkupSafe==0.23
 python-dateutil==2.5.3
 pytz==2016.4
 six==1.10.0
+rsa==4.0
 Werkzeug==0.11.10
 requests==2.18.4
 pafy==0.5.4
 urllib3==1.24.2
 youtube-dl==2018.10.5
+certifi==2018.8.24
+chardet==3.0.4
+humanfriendly==4.16.1
+gtts
+googletrans
 html5lib
 lxml
 flask-wtf
