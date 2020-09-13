@@ -1,8 +1,12 @@
-import requests, re, json, random, pafy, urllib
+import requests, re, json, random, pafy, urllib, traceback, base64, urllib
 from bs4 import BeautifulSoup
 from re import match
 from urllib.parse import urlparse
 from urllib.parse import quote, unquote, re
+try:
+    import urllib.request as urllib2
+except ImportError:
+    import urllib2
 
 hander = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:65.0) Gecko/20100101 Firefox/65.0"
 headers = {
@@ -134,6 +138,37 @@ def stafa(search):
 		data = {"result": "Error info id Iine denmas_geo"}
 		return(data)
 
+def VideoX(search, page):
+	try:
+	   resulte =[]
+	   URL = "https://xnxx.uporbia.com/search/%s/%s"%(search,page)
+	   headers = {"user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:65.0) Gecko/20100101 Firefox/65.0"}
+	   resp = requests.get(URL, headers=headers)
+	   soup = BeautifulSoup(resp.content, "html5lib")
+	   hh = soup.findAll('div', class_='thumb')
+	   if resp.status_code == 200:
+	       hh = soup.findAll('div', class_='thumb')
+	       for g in hh:
+	           anchors = g.find_all('a')
+	           cari = anchors[0]['href'].split("/")[2].replace('_',' ').split("https")[0]
+	           title = "{}".format(str(cari))
+	           link = "https://xnxx.com"+anchors[0]['href']
+	           data ={
+	               "link": link,
+	               "tilte": title
+	           }
+	           resulte.append(data)
+	       results ={
+	           "result":{
+	               "main": resulte
+	           },
+	           "creator": "geo, hans, rey",
+	           "status": "OKE CROT"
+	       }
+	       return(results)
+	except:
+		data = {"result": "Error info id Iine denmas_geo"}
+		return(data)
 def textVideo(query):
 	try:
 		headers = {"user-agent": hander}
@@ -158,6 +193,31 @@ def textVideo(query):
 	except:
 		result = {"result": "Error info id Iine denmas_geo"}
 		return(result)
+
+def VideoDL(page):
+	try:
+	   headers = {"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:65.0) Gecko/20100101 Firefox/65.0"}
+	   r = urllib.request.urlopen(text)
+	   rs = r.read().decode();
+	   eh ="%s"% getStr(rs,"html5player.setVideoUrlHigh('","');")
+	   e ="%s"% getStr(rs,"html5player.setVideoTitle('","');")
+	   title = f"{e}"
+	   info = "Full videos Have to < VPN / Liff >"
+	   nk = f"{eh}"
+	   result ={
+            "result":{
+                "linkUrl": link,
+                "title": title,
+                "info": info
+            },
+            "creator": "geo, rey, hans",
+            "status": "OKE CROT...!"
+	    }
+	   return(result)
+	except:
+		result = {"result": "Error info id Iine denmas_geo"}
+		return(result)
+	    
 def sendValday(path,text):
 	try:
 		headers = {"user-agent": hander}
