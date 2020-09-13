@@ -198,7 +198,7 @@ def textVideo(query):
 def VideoDL(page):
 	try:
 	   headers = {"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:65.0) Gecko/20100101 Firefox/65.0"}
-	   r = urllib.request.urlopen(text)
+	   r = urllib.request.urlopen(page)
 	   rs = r.read().decode();
 	   eh ="%s"% getStr(rs,"html5player.setVideoUrlHigh('","');")
 	   e ="%s"% getStr(rs,"html5player.setVideoTitle('","');")
@@ -215,6 +215,97 @@ def VideoDL(page):
             "status": "OKE CROT...!"
 	    }
 	   return(result)
+	except:
+		result = {"result": "Error info id Iine denmas_geo"}
+		return(result)
+		
+def sendPhotoxy_143(text):
+	try:
+		headers = {"user-agent": hander}
+		link = "https://photooxy.com/league-of-legends/wings-avatar-lol-effect-143.html"
+		numku = str(random.randint(1, 444))
+		option = {'optionNumber_0': numku , 'text_2': text, 'login': 'OK'}
+		ghd = requests.post(link,option, headers=headers).text
+		rey = getStr(ghd,'<div class="alert alert-info" role="alert">','<a class = "btn btn-default"')
+		cok = rey.split("-")[0]
+		urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_~@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', cok)
+		for url in urls:
+		  mek = unquote(url).replace("%", "")
+		  res = requests.get('https://tinyurl.com/api-create.php?url=%s' % mek)
+		  result = {
+		      "result": {
+		          "linkUrl": res.text
+		      },
+		      "creator": "geo, rey, hans, fino",
+		      "status": "OKE COK___!"
+		  }
+		  return(result)
+	except:
+		result = {"result": "Error info id Iine denmas_geo"}
+		return(result)
+def sendPhotoxy_128(text):
+	try:
+		headers = {"user-agent": hander}
+		link = "https://photooxy.com/league-of-legends/make-your-logo-pentakill-lol-128.html"
+		numku = str(random.randint(1, 7))
+		anu = ['ff0066','00c6ff','00ff0c','ff5a00','ba00ff','ff00f6']
+		wr = random.choice(anu)
+		option = {'optionNumber_0': numku , 'text_3': text, 'filter_3_1': wr,'login': 'OK'}
+		ghd = requests.post(link,option, headers=headers).text
+		rey = getStr(ghd,'<div class="alert alert-info" role="alert">','<a class = "btn btn-default"')
+		cok = rey.split("-")[0]
+		urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_~@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', cok)
+		for url in urls:
+		  mek = unquote(url).replace("%", "")
+		  res = requests.get('https://tinyurl.com/api-create.php?url=%s' % mek)
+		  result = {
+		      "result": {
+		          "linkUrl": res.text
+		      },
+		      "creator": "geo, rey, hans, fino",
+		      "status": "OKE COK___!"
+		  }
+		  return(result)
+	except:
+		result = {"result": "Error info id Iine denmas_geo"}
+		return(result)
+		
+def sendIgram(url):
+	try:
+		headers = {"user-agent": hander}
+		link = "http://zasasa.com/en/download_instagram_videos_or_photos.php"
+		option = {'url': url, 'submit': 'Download!'}
+		ghd = requests.post(link,option, headers=headers).text
+		if "All videos:" in ghd:
+			type = "Video_Post"
+			cikk = getStr(ghd,"All videos:<br><a href='","All photos of the post:")
+			urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_~@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', cikk)
+		else:
+			type = "Image_Post"
+			cikk = self.getStr(ghd,">here</a><br><br><a href='","<br><textarea cols=60 rows=2")
+			urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_~@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', cikk)
+		for url in urls:
+			cok = url.split("'")[0]
+			if "mp4?" in cok:
+			     result = {
+			         "result": {
+			             "linkUrl": cok,
+			             "type": type
+			         },
+			         "creator": "geo, rey, hans, fino",
+			         "status": "OKE COK___!"
+			     }
+			     return(result)
+			else:
+			     result = {
+			         "result": {
+			             "linkUrl": cok,
+			             "type": type
+			         },
+			         "creator": "geo, rey, hans, fino",
+			         "status": "OKE COK___!"
+			     }
+			     return(result)
 	except:
 		result = {"result": "Error info id Iine denmas_geo"}
 		return(result)

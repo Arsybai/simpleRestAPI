@@ -126,6 +126,21 @@ def rest_sendcover():
 	this_path = request.args['path']
 	this_rest = scrap.sendcover(this_path)
 	return json.dumps(this_rest, indent=4, sort_keys=True)
+@app.route('/legends/avatar',methods=['POST','GET'])
+def rest_sendPhotoxy_128():
+	this_path = request.args['text']
+	this_rest = scrap.sendPhotoxy_128(this_path)
+	return json.dumps(this_rest, indent=4, sort_keys=True)
+@app.route('/legends/wings',methods=['POST','GET'])
+def rest_sendPhotoxy_143():
+	this_path = request.args['text']
+	this_rest = scrap.sendPhotoxy_143(this_path)
+	return json.dumps(this_rest, indent=4, sort_keys=True)
+@app.route('/instadl',methods=['POST','GET'])
+def rest_sendIgram():
+	this_path = request.args['url']
+	this_rest = scrap.sendIgram(this_path)
+	return json.dumps(this_rest, indent=4, sort_keys=True)
 	
 @app.route('/photofun/breaking-news',methods=['POST','GET'])
 def rest_sendNews():
