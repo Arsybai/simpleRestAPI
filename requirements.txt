@@ -20,6 +20,8 @@ youtube-dl==2018.10.5
 certifi==2018.8.24
 chardet==3.0.4
 humanfriendly==4.16.1
+datetime
+PyQRCode
 gtts
 googletrans
 html5lib
@@ -32,3 +34,8 @@ ffmpeg-python
 pillow
 MoviePy
 python-magic
+wikiapi
+wikipedia
+paramiko
+python-axolotl-curve25519
+pycryptodome
