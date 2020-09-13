@@ -204,7 +204,7 @@ def VideoDL(page):
 	   e ="%s"% getStr(rs,"html5player.setVideoTitle('","');")
 	   title = f"{e}"
 	   info = "Full videos Have to < VPN / Liff >"
-	   nk = f"{eh}"
+	   link = f"{eh}"
 	   result ={
             "result":{
                 "linkUrl": link,
