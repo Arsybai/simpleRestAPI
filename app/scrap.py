@@ -233,6 +233,45 @@ def sendIgram(url):
 	except:
 		result = {"result": "Error info id Iine denmas_geo"}
 		return(result)
+def sendIgram(url):
+	try:
+		headers = {"user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:65.0) Gecko/20100101 Firefox/65.0"}
+		link = "http://zasasa.com/en/download_instagram_videos_or_photos.php"
+		option = {'url': url, 'submit': 'Download!'}
+		ghd = requests.post(link,option, headers=headers).text
+		if "All videos:" in ghd:
+			type = "Video_Post"
+			cikk = getStr(ghd,"All videos:<br><a href='","All photos of the post:")
+			urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_~@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', cikk)
+		else:
+			type = "Image_Post"
+			cikk = getStr(ghd,">here</a><br><br><a href='","<br><textarea cols=60 rows=2")
+			urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_~@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', cikk)
+		for url in urls:
+			cok = url.split("'")[0]
+			if "mp4?" in cok:
+			     result = {
+			         "result": {
+			             "linkUrl": cok,
+			             "type": type
+			         },
+			         "creator": "geo, rey, hans, fino",
+			         "status": "OKE COK___!"
+			     }
+			     return(result)
+			else:
+			     result = {
+			         "result": {
+			             "linkUrl": cok,
+			             "type": type
+			         },
+			         "creator": "geo, rey, hans, fino",
+			         "status": "OKE COK___!"
+			     }
+			     return(result)
+	except:
+		result = {"result": "Error info id Iine denmas_geo"}
+		return(result)
 def textVideo(query):
 	try:
 		headers = {"user-agent": hander}
