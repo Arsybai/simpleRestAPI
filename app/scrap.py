@@ -304,10 +304,10 @@ def smulid(name):
 	    rc ="%s"% getStr(rs,'"pic_url":"','",')
 	    a ="%s"% getStr(rs,'"handle":"','",')
 	    ret ="%s"% getStr(rs,'"followers":"','","followees"')
-	    res ="%s"% getStr(rs,'"followees":',',"num_performances":')
-	    cok ="%s"% getStr(rs,',"num_performances":',',"blurb":')
+	    res ="%s"% getStr(rs,'"followees":"','","num_performances":')
+	    cok ="%s"% getStr(rs,',"num_performances":"','","blurb":')
 	    e ="%s"% getStr(rs,',"blurb":"','","is_following":')
-	    vip ="%s"% getStr(rs,'"is_vip":','"is_verified"')
+	    vip ="%s"% getStr(rs,'"is_vip":',',"is_verified"')
 	    result ={
 	        "result":{
 	            "name": a,
