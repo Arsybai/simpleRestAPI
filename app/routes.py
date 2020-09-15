@@ -206,13 +206,13 @@ def rest_sendNews():
 	return json.dumps(this_rest, indent=4, sort_keys=True)
 	 #json.dumps(this_rest, indent=4)
 	 
-@app.route('/token',methods=['POST','GET'])
-def rest_sendNews():
-	this_path = scrap.NewQRLogin()
-	token, cert = request.args["hander"]
+#@app.route('/token',methods=['POST','GET'])
+#def rest_sendNews():
+#	this_path = scrap.NewQRLogin()
+#	token, cert = request.args["hander"]
 	#line.loginWithQrCode("android_lite")
-	this_rest = scrap.loginWithQrCode(this_path, token, cert)
-	return json.dumps(this_rest, indent=4, sort_keys=True)
+#	this_rest = scrap.loginWithQrCode(this_path, token, cert)
+#	return json.dumps(this_rest, indent=4, sort_keys=True)
 
 #line = NewQRLogin()
 #token, cert = line.loginWithQrCode("android_lite")
