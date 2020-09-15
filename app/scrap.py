@@ -247,7 +247,7 @@ def dlStfa(url):
         ydl_opts = {}
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             meta = ydl.extract_info(video, download=False)
-        link = meta['thumbnail']
+        link = meta['thumbnail'].split("?")[0]
         res = requests.get('https://tinyurl.com/api-create.php?url=%s' % link)
         result = {
             "creator": "geo, hans, fino",
