@@ -30,17 +30,17 @@ def rest_dlStfa():
 	
 @app.route('/komik_api',methods=['POST','GET'])
 def rest_komik():
-	this_query = request.args['manga']
+	this_query = request.args['id']
 	this_rest = scrap.komik(this_query)
 	return json.dumps(this_rest, indent=4, sort_keys=True)
 	
-@app.route('/komik/list',methods=['POST','GET'])
+@app.route('/komik_list/api',methods=['POST','GET'])
 def rest_komikList():
 	this_query = request.args['url']
 	this_rest = scrap.komikList(this_query)
 	return json.dumps(this_rest, indent=4, sort_keys=True)
 	
-@app.route('/komik/res',methods=['POST','GET'])
+@app.route('/komik_res/api',methods=['POST','GET'])
 def rest_komikRes():
 	this_query = request.args['url']
 	this_rest = scrap.komikRes(this_query)
