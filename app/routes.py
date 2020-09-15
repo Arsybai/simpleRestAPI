@@ -21,11 +21,43 @@ def rest_stafa():
 	this_query = request.args['search']
 	this_rest = scrap.stafa(this_query)
 	return json.dumps(this_rest, indent=4, sort_keys=True)
+	
+@app.route('/dlmp3',methods=['POST','GET'])
+def rest_dlStfa():
+	this_query = request.args['code']
+	this_rest = scrap.dlStfa(this_query)
+	return json.dumps(this_rest, indent=4, sort_keys=True)
+	
+@app.route('/komik_api',methods=['POST','GET'])
+def rest_komik():
+	this_query = request.args['manga']
+	this_rest = scrap.komik(this_query)
+	return json.dumps(this_rest, indent=4, sort_keys=True)
+	
+@app.route('/komik/list',methods=['POST','GET'])
+def rest_komikList():
+	this_query = request.args['url']
+	this_rest = scrap.komikList(this_query)
+	return json.dumps(this_rest, indent=4, sort_keys=True)
+	
+@app.route('/komik/res',methods=['POST','GET'])
+def rest_komikRes():
+	this_query = request.args['url']
+	this_rest = scrap.komikRes(this_query)
+	return json.dumps(this_rest, indent=4, sort_keys=True)
+		
+@app.route('/komik_search/api',methods=['POST','GET'])
+def rest_komikSearch():
+	this_query = request.args['search']
+	this_rest = scrap.komikSearch(this_query)
+	return json.dumps(this_rest, indent=4, sort_keys=True)
+	
 @app.route('/googlesearch',methods=['POST','GET'])
 def rest_goSearch():
 	this_query = request.args['query']
 	this_rest = scrap.goSearch(this_query)
 	return json.dumps(this_rest, indent=4, sort_keys=True)
+	
 @app.route('/xvideos',methods=['POST','GET'])
 def rest_VideoX():
 	this_query = request.args['search']
@@ -51,16 +83,19 @@ def rest_artiName():
 	this_query = request.args['query']
 	this_rest = scrap.artiName(this_query)
 	return json.dumps(this_rest, indent=4, sort_keys=True)
+	
 @app.route('/instadl',methods=['POST','GET'])
 def rest_sendIgram():
 	this_path = request.args['url']
 	this_rest = scrap.sendIgram(this_path)
 	return json.dumps(this_rest, indent=4, sort_keys=True)
+	
 @app.route('/smule',methods=['POST','GET'])
 def rest_smulid():
 	this_path = request.args['id']
 	this_rest = scrap.smulid(this_path)
 	return json.dumps(this_rest, indent=4, sort_keys=True)
+	
 @app.route('/infogempa',methods=['POST','GET'])
 def rest_ingempa():
 	this_path = request.args['page']

@@ -1,15 +1,21 @@
 import requests, re, json, random, pafy, urllib, traceback, base64, urllib, urllib.request, urllib3, html5lib, codecs, string, os, six, ast
+import youtube_dl
 from bs4 import BeautifulSoup
 from re import match
 from urllib.parse import urlparse
 from urllib.parse import quote, unquote, re
 from urllib.request import urlopen
+from template import *
+from template.ttypes import *
+import traceback, time
 try:
     import urllib.request as urllib2
 except ImportError:
     import urllib2
 
-hander = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:65.0) Gecko/20100101 Firefox/65.0"
+hander = {
+    "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:65.0) Gecko/20100101 Firefox/65.0"
+}
 headers = {
 	'User-Agent': 'Mozilla/5.0 (Windows NT 6.2; Win64; x64; rv:74.0) Gecko/20100101 Firefox/74.0',
 	'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
@@ -27,6 +33,10 @@ def getStr(string,start,end, index = 1):
 		str = str[index].split(end)
 		return str[0]
 	except:pass
+
+host = 'https://gxx.line.naver.jp'
+qrEndpoint = '/acct/lgn/sq/v1'
+verifierEndpoint = '/acct/lp/lgn/sq/v1'
 	
 def img(query):
 	imagedata = []
@@ -84,7 +94,7 @@ def artiName(nama):
 		return(result)
 		
 def goSearch(query):
-    headers = {"user-agent" : hander}
+    #headers = {"user-agent" : hander}
     resp = requests.get(f"https://google.com/search?q={query}", headers=headers)
     if resp.status_code == 200:
     	soup = BeautifulSoup(resp.content, "html.parser")
@@ -121,9 +131,10 @@ def stafa(search):
 			if "https://m.stafabandt.site/link/" in str(b):
 				title = b.get("title")
 				link = b.get("href")
+				linkny = str(link).replace("https://m.stafabandt.site/link/","").split(".")[0]
 				item = {
     		  	"title": title,
-    		  	"link": link
+    		  	"link": linkny
 				}
 				results.append(item)
 		data ={
@@ -137,6 +148,123 @@ def stafa(search):
 	except:
 		data = {"result": "Error info id Iine denmas_geo"}
 		return(data)
+		
+def komik(new):
+    try:
+        data = []
+        smule = f"https://komiku.co.id/{new}/"
+        resp = requests.get(smule, headers=headers)
+        soup = BeautifulSoup(resp.content, "html.parser")
+        hh = soup.findAll("div", class_="bgei")
+        for idd in hh:
+            a = idd.find_all("a")[0]["href"]
+            dta = {
+                "link": "%s" %(a)
+            }
+            data.append(dta)
+        result = {
+            "creator": "geo",
+            "status": "OKE COK__!",
+            "result": data
+        }
+        return(result)
+    except:
+        data = {"result": "Error info id Iine denmas_geo"}
+        return(data)
+        
+def komikRes(new):
+    try:
+        data = []
+        smule = f"{new}"
+        resp = requests.get(smule, headers=headers)
+        soup = BeautifulSoup(resp.content, "html.parser")
+        hh = soup.findAll("div", class_="bc")
+        for idd in hh:
+            a = idd.find_all("img")
+        for xc in a:
+            beb = f'{xc["src"]}'
+            dta = {
+                "link": "%s" %(beb)
+            }
+            data.append(dta)
+        result = {
+            "creator": "geo",
+            "status": "OKE COK__!",
+            "result": data
+        }
+        return(result)
+    except:
+        #error = traceback.format_exc()
+        result = {"result": "Error info id Iine denmas_geo"}
+        return(result)
+        
+def komikList(query):
+    try:
+        data =[]
+        link = f"{query}"
+        resp = requests.get(link, headers=headers)
+        soup = BeautifulSoup(resp.content, "html.parser")
+        hh = soup.findAll('td', class_='judulseries')[:150]
+        if resp.status_code == 200:
+            for g in hh:
+                Rest = g.find_all('a')[0]["href"]
+                res = {
+                    "linkResult": Rest
+                }
+                data.append(res)
+            result = {
+                "creator": "geo",
+                "status": "OKE COK__!",
+                "result": data
+            }
+            return(result)
+    except:
+        result = {"result": "Error info id Iine denmas_geo"}
+        return(result)
+def komikSearch(query):
+    try:
+        data =[]
+        smule = f"https://komiku.co.id/?post_type=manga&s={query}"
+        resp = requests.get(smule, headers=headers)
+        soup = BeautifulSoup(resp.content, "html.parser")
+        hh = soup.findAll("div", class_="daftar")
+        for idd in hh:
+            a = idd.find_all("a")[0]["href"]
+            item ={
+                "list": "%s" %(a)
+            }
+            data.append(item)
+        result = {
+           "creator": "geo",
+           "status": "OKE COK__!",
+           "result": data
+        }
+        return(result)
+    except:
+        result = {"result": "Error info id Iine denmas_geo"}
+        return(result)
+        
+def dlStfa(url):
+    try:
+        video = f"{url}"
+        ydl_opts = {}
+        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+            meta = ydl.extract_info(f"{video}", download=False)
+            link = meta['thumbnail']
+            res = requests.get('https://tinyurl.com/api-create.php?url=%s' % link)
+            result = {
+                "creator": "geo, hans, fino",
+                "status": "OKE COK___!",
+                "result":{
+                    "urlMp3": meta['formats'][0]['url'],
+                    "urlimg": res.text,
+                    "title": meta['title']
+                },
+            }
+            return(result)
+    except:
+        data = {"result": "Error info id Iine denmas_geo"}
+        return(data)
 def VideoX(search, page):
 	try:
 	   resulte =[]
@@ -190,46 +318,6 @@ def VideoDL(page):
             "status": "OKE CROT...!"
 	    }
 	   return(result)
-	except:
-		result = {"result": "Error info id Iine denmas_geo"}
-		return(result)
-def sendIgram(url):
-	try:
-		headers = {"user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:65.0) Gecko/20100101 Firefox/65.0"}
-		link = "http://zasasa.com/en/download_instagram_videos_or_photos.php"
-		option = {'url': url, 'submit': 'Download!'}
-		ghd = requests.post(link,option, headers=headers).text
-		if "All videos:" in ghd:
-			type = "Video_Post"
-			cikk = getStr(ghd,"All videos:<br><a href='","All photos of the post:")
-			urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_~@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', cikk)
-		else:
-			type = "Image_Post"
-			cikk = getStr(ghd,">here</a><br><br><a href='","<br><textarea cols=60 rows=2")
-			urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_~@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', cikk)
-		for url in urls:
-			cok = url.split("'")[0]
-			imagedata.append(cok)
-			if "mp4?" in cok:
-			     result = {
-			         "result": {
-			             "linkUrl": imagedata
-			         },
-			         "type": type,
-			         "creator": "geo, rey, hans, fino",
-			         "status": "OKE COK___!"
-			     }
-			     return(result)
-			else:
-			     result = {
-			         "result": {
-			             "linkUrl": imagedata
-			         },
-			         "type": type,
-			         "creator": "geo, rey, hans, fino",
-			         "status": "OKE COK___!"
-			     }
-			     return(result)
 	except:
 		result = {"result": "Error info id Iine denmas_geo"}
 		return(result)
