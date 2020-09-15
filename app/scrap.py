@@ -246,19 +246,19 @@ def dlStfa(url):
         #video = f"{url}"
         ydl_opts = {}
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-            meta = ydl.extract_info(f"https://www.youtube.com/watch?v={url}", download=False)
-        link = meta['thumbnail']
-        res = requests.get('https://tinyurl.com/api-create.php?url=%s' % link)
-        result = {
-            "creator": "geo, hans, fino",
-            "status": "OKE COK___!",
-            "result":{
-                "urlMp3": meta['formats'][0]['url'],
-                "urlimg": res.text,
-                "title": meta['title']
-            },
-        }
-        return(result)
+            meta = ydl.extract_info(f"{url}", download=False)
+            link = meta['thumbnail']
+            res = requests.get('https://tinyurl.com/api-create.php?url=%s' % link)
+            result = {
+                "creator": "geo, hans, fino",
+                "status": "OKE COK___!",
+                "result":{
+                    "urlMp3": meta['formats'][0]['url'],
+                    "urlimg": res.text,
+                    "title": meta['title']
+                },
+            }
+            return(result)
     except:
         data = {"result": "Error info id Iine denmas_geo"}
         return(data)
