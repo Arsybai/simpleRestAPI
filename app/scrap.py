@@ -117,7 +117,7 @@ def goSearch(query):
     	
 def stafa(search):
 	try:
-		hander = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:65.0) Gecko/20100101 Firefox/65.0"
+		#hander = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:65.0) Gecko/20100101 Firefox/65.0"
 		results = []
 		URL = f"https://m.stafabandt.site/mp3/{search}.html"
 		#headers = {"user-agent": hander}
@@ -359,7 +359,7 @@ def sendIgram(url):
 		return(result)
 def textVideo(query):
 	try:
-		headers = {"user-agent": hander}
+		#headers = {"user-agent": hander}
 		link = "https://photooxy.com/league-of-legends/create-avatar-video-with-animation-lol-champions-180.html"
 		numku = str(random.randint(1, 23))
 		option = {'optionNumber_0': numku, 'optionNumber_1': '1', 'text_2': query, 'login': 'OK'}
@@ -494,7 +494,7 @@ def sendChamp(text):
 		return(result)
 def sendPhotoxy_143(text):
 	try:
-		headers = {"user-agent": hander}
+		#headers = {"user-agent": hander}
 		link = "https://photooxy.com/league-of-legends/wings-avatar-lol-effect-143.html"
 		numku = str(random.randint(1, 444))
 		option = {'optionNumber_0': numku , 'text_2': text, 'login': 'OK'}
@@ -518,7 +518,7 @@ def sendPhotoxy_143(text):
 		return(result)
 def sendPhotoxy_128(text):
 	try:
-		headers = {"user-agent": hander}
+		#headers = {"user-agent": hander}
 		link = "https://photooxy.com/league-of-legends/make-your-logo-pentakill-lol-128.html"
 		numku = str(random.randint(1, 7))
 		anu = ['ff0066','00c6ff','00ff0c','ff5a00','ba00ff','ff00f6']
@@ -545,7 +545,7 @@ def sendPhotoxy_128(text):
 	    
 def sendValday(path,text):
 	try:
-		headers = {"user-agent": hander}
+		#headers = {"user-agent": hander}
 		link = "https://m.photofunia.com/categories/valentines_day/valentine"
 		option = {'effect-form js-effect-form': 'input-file', 'image': path,'text': text, 'button-container': 'GO'}
 		ck = requests.post(link,option, headers=headers).text
@@ -567,7 +567,7 @@ def sendValday(path,text):
 		return(result)
 def sendNews(path,text,text2,text3):
 	try:
-		headers = {"user-agent": hander}
+		#headers = {"user-agent": hander}
 		link = "https://m.photofunia.com/categories/all_effects/breaking-news"
 		option = {'effect-form js-effect-form': 'input-file', 'image': path,'field text-field': 'text', 'channel': text,'title1': text2,'title2': text3, 'button-container': 'GO'}
 		usa = requests.post(link,option, headers=headers).text
