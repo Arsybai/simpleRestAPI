@@ -1,13 +1,10 @@
-import requests, re, json, random, pafy, urllib, traceback, base64, urllib, urllib.request, urllib3, html5lib, codecs, string, os, six, ast
+import requests, re, json, random, pafy, urllib, traceback, base64, urllib, urllib.request, urllib3, html5lib, codecs, string, os, six, ast, time
 import youtube_dl
 from bs4 import BeautifulSoup
 from re import match
 from urllib.parse import urlparse
 from urllib.parse import quote, unquote, re
 from urllib.request import urlopen
-from template import *
-from template.ttypes import *
-import traceback, time
 try:
     import urllib.request as urllib2
 except ImportError:
