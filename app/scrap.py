@@ -516,7 +516,6 @@ def sendChamp(text):
 		return(result)
 def sendPhotoxy_143(text):
 	try:
-		#headers = {"user-agent": hander}
 		link = "https://photooxy.com/league-of-legends/wings-avatar-lol-effect-143.html"
 		numku = str(random.randint(1, 444))
 		option = {'optionNumber_0': numku , 'text_2': text, 'login': 'OK'}
@@ -870,11 +869,11 @@ def sendPhotoxy_171(text):
             mek = unquote(url).replace("%", "")
             res = requests.get('https://tinyurl.com/api-create.php?url=%s' %mek)
             result = {
-                "creator": "geo, rey",
-                "status": "OKE COK___!",
                 "result": {
                     "linkUrl": res.text
-                }
+                },
+                "creator": "geo, rey",
+                "status": "OKE COK___!"
             }
             return(result)
     except:
@@ -903,7 +902,6 @@ def sendPhotoxy_222(text):
     except:
         result = {"result": "Error info id Iine denmas_geo"}
         return(result)
-
 def sendPhotoxy_170(text):
     try:
         link = "https://photooxy.com/logo-and-text-effects/smoke-typography-text-effect-170.html"
@@ -926,7 +924,7 @@ def sendPhotoxy_170(text):
     except:
         result = {"result": "Error info id Iine denmas_geo"}
         return(result)
-#========================================exc
+#========================================
 def sendPhotoxy_398(path1):
     try:
         link = "https://photooxy.com/other-design/iphone-xs-mockup-online-398.html"
@@ -949,7 +947,6 @@ def sendPhotoxy_398(path1):
     except:
         result = {"result": "Error info id Iine denmas_geo"}
         return(result)
-        
 def sendPhotoxy_301(path1,text):
     try:
         link = "https://photooxy.com/other-design/combined-cover-and-avatar-301.html"
@@ -995,13 +992,12 @@ def sendPhotoxy_148(path1):
     except:
         result = {"result": "Error info id Iine denmas_geo"}
         return(result)
-        
 def sendPhotoxy_382(paht):
     try:
         link = "https://photooxy.com/birthday-frames/frame-hoa-violet-nature-382.html"
         option = {
             "selectImage_0": "btn btn-primary selectButton style_button_0", 
-            "image_0": paht, 
+            "image_0": paht,
             "login": "OK"
         }
         ghd = requests.post(link,option, headers=headers).text
@@ -1022,7 +1018,6 @@ def sendPhotoxy_382(paht):
     except:
         result = {"result": "Error info id Iine denmas_geo"}
         return(result)
-        
 def sendPhotoxy_349(path1):
     try:
         link = "https://photooxy.com/photo-frames/simple-pip-frame-349.html"
@@ -1045,7 +1040,6 @@ def sendPhotoxy_349(path1):
     except:
         result = {"result": "Error info id Iine denmas_geo"}
         return(result)
-        
 def sendPhotoxy_345(path1,text):
     try:
         link = "https://photooxy.com/photo-frames/photo-frame-on-beach-345.html"
