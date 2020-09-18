@@ -565,7 +565,7 @@ def sendPhotoxy_181(path1,text):
         link = "https://photooxy.com/other-design/create-your-own-mastery-7-avatar-181.html"
         option = {'selectImage_1': 'btn btn-primary selectButton style_button_1', 'image_1': path1, 'text_4': text, 'login': 'OK'}
         ghd = requests.post(link,option, headers=headers).text
-        mek = self.getStr(ghd,'<div class="alert alert-info" role="alert">','<a class = "btn btn-default"')
+        mek = getStr(ghd,'<div class="alert alert-info" role="alert">','<a class = "btn btn-default"')
         cok = mek.replace(' ','').replace('\n','').split("-")[0]
         urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_~@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', cok)
         for url in urls:
