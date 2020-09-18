@@ -23,16 +23,6 @@ headers = {
 	'Cache-Control': 'no-cache',
 	'TE': 'Trailers',
 }
-handers = {
-    'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:65.0) Gecko/20100101 Firefox/65.0',
-	'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-	'Accept-Language': 'id,en-US;q=0.7,en;q=0.3',
-	'Connection': 'keep-alive',
-	'Upgrade-Insecure-Requests': '1',
-	'Pragma': 'no-cache',
-	'Cache-Control': 'no-cache',
-	'TE': 'Trailers',
-}
 
 def getStr(string,start,end, index = 1):
 	try:
