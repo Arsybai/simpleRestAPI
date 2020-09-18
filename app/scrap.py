@@ -541,7 +541,6 @@ def sendPhotoxy_143(text):
 def sendPhotoxy_231(path1,text):
     try:
         link = "https://photooxy.com/league-of-legends/make-flame-avatar-with-your-photo-231.html"
-        headers = {"user-agent": hander}
         option = {'selectImage_1': 'btn btn-primary selectButton style_button_1', 'image_1': path1, 'text_4': text, 'login': 'OK'}
         ghd = requests.post(link,option, headers=headers).text
         mek = getStr(ghd,'<div class="alert alert-info" role="alert">','<a class = "btn btn-default"')
@@ -564,7 +563,6 @@ def sendPhotoxy_231(path1,text):
 def sendPhotoxy_181(path1,text):
     try:
         link = "https://photooxy.com/other-design/create-your-own-mastery-7-avatar-181.html"
-        headers = {"user-agent": hander}
         option = {'selectImage_1': 'btn btn-primary selectButton style_button_1', 'image_1': path1, 'text_4': text, 'login': 'OK'}
         ghd = requests.post(link,option, headers=headers).text
         mek = self.getStr(ghd,'<div class="alert alert-info" role="alert">','<a class = "btn btn-default"')
@@ -587,7 +585,6 @@ def sendPhotoxy_181(path1,text):
 def sendPhotoxy_384(path1):
     try:
         link = "https://photooxy.com/photo-frames/beautiful-pine-leaf-frame-384.html"
-        headers = {"user-agent": hander}
         option = {'selectImage_1': 'btn btn-primary selectButton style_button_1', 'image_1': path1, 'login': 'OK'}
         ghd = requests.post(link,option, headers=headers).text
         mek = getStr(ghd,'<div class="alert alert-info" role="alert">','<a class = "btn btn-default"')
