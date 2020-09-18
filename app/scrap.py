@@ -50,7 +50,7 @@ def apitiny(query):
     urlnya = getStr(ghd,'<div id="success"></div><br><small>[<a href="','" target="_blank" rel="nofollow">')
     result = {
         "result":{
-            "url": "%" % urlnya
+            "url": "%s" % urlnya
         }
     }
     return result
