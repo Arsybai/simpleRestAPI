@@ -549,7 +549,7 @@ def sendPhotoxy_231(path1,text):
         urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_~@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', cok)
         for url in urls:
             mek = unquote(url).replace("%", "")
-            res = requests.get('https://tinyurl.com/api-create.php?url=%s'mek)
+            res = requests.get('https://tinyurl.com/api-create.php?url=%s' %mek)
             result = {
                 "result": {
                     "linkUrl": res.text
@@ -572,7 +572,7 @@ def sendPhotoxy_181(path1,text):
         urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_~@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', cok)
         for url in urls:
             mek = unquote(url).replace("%", "")
-            res = requests.get('https://tinyurl.com/api-create.php?url=%s' mek)
+            res = requests.get('https://tinyurl.com/api-create.php?url=%s' %mek)
             result = {
                 "result": {
                     "linkUrl": res.text
@@ -595,7 +595,7 @@ def sendPhotoxy_384(path1):
         urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_~@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', cok)
         for url in urls:
             mek = unquote(url).replace("%", "")
-            res = requests.get('https://tinyurl.com/api-create.php?url=%s'mek)
+            res = requests.get('https://tinyurl.com/api-create.php?url=%s' %mek)
             result = {
                 "result": {
                     "linkUrl": res.text
