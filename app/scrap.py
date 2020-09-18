@@ -796,8 +796,8 @@ def sendPhotoxy_188(text):
             }
             return(result)
     except:
-        error = {"result": "Error info id Iine denmas_geo"}
-        return(error)
+        result = {"result": "Error info id Iine denmas_geo"}
+        return(result)
         
 def sendPhotoxy_116(text):
     try:
@@ -819,8 +819,8 @@ def sendPhotoxy_116(text):
             }
             return(result)
     except:
-        error = {"result": "Error info id Iine denmas_geo"}
-        return(error)
+        result = {"result": "Error info id Iine denmas_geo"}
+        return(result)
         
 def sendPhotoxy_174(text):
     try:
@@ -842,8 +842,8 @@ def sendPhotoxy_174(text):
             }
             return(result)
     except:
-        error = {"result": "Error info id Iine denmas_geo"}
-        return(error)
+        result = {"result": "Error info id Iine denmas_geo"}
+        return(result)
         
 def sendPhotoxy_172(text):
     try:
@@ -865,8 +865,8 @@ def sendPhotoxy_172(text):
             }
             return(result)
     except:
-        error = {"result": "Error info id Iine denmas_geo"}
-        return(error)
+        result = {"result": "Error info id Iine denmas_geo"}
+        return(result)
         
 def sendPhotoxy_171(text):
     try:
@@ -888,8 +888,8 @@ def sendPhotoxy_171(text):
             }
             return(result)
     except:
-        error = {"result": "Error info id Iine denmas_geo"}
-        return(error)
+        result = {"result": "Error info id Iine denmas_geo"}
+        return(result)
 
 def sendPhotoxy_222(text):
     try:
@@ -911,8 +911,8 @@ def sendPhotoxy_222(text):
             }
             return(result)
     except:
-        error = {"result": "Error info id Iine denmas_geo"}
-        return(error)
+        result = {"result": "Error info id Iine denmas_geo"}
+        return(result)
 
 def sendPhotoxy_170(text):
     try:
@@ -934,15 +934,15 @@ def sendPhotoxy_170(text):
             }
             return(result)
     except:
-        error = {"result": "Error info id Iine denmas_geo"}
-        return(error)
+        result = {"result": "Error info id Iine denmas_geo"}
+        return(result)
 #========================================exc
 def sendPhotoxy_398(path1):
     try:
         link = "https://photooxy.com/other-design/iphone-xs-mockup-online-398.html"
         option = {'selectImage_0': 'btn btn-primary selectButton style_button_0', 'image_0': path1,'login': 'OK'}
         ghd = requests.post(link,option, headers=headers).text
-        mek = line.getStr(ghd,'<div class="alert alert-info" role="alert">','<a class = "btn btn-default"')
+        mek = getStr(ghd,'<div class="alert alert-info" role="alert">','<a class = "btn btn-default"')
         cok = mek.split("-")[0]
         urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_~@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', cok)
         for url in urls:
@@ -957,8 +957,8 @@ def sendPhotoxy_398(path1):
             }
             return(result)
     except:
-        error = {"result": "Error info id Iine denmas_geo"}
-        return(error)
+        result = {"result": "Error info id Iine denmas_geo"}
+        return(result)
         
 def sendPhotoxy_301(path1,text):
     try:
@@ -980,8 +980,8 @@ def sendPhotoxy_301(path1,text):
             }
             return(result)
     except:
-        error = {"result": "Error info id Iine denmas_geo"}
-        return(error)
+        result = {"result": "Error info id Iine denmas_geo"}
+        return(result)
 
 def sendPhotoxy_148(path1):
     try:
@@ -1003,8 +1003,8 @@ def sendPhotoxy_148(path1):
             }
             return(result)
     except:
-        error = {"result": "Error info id Iine denmas_geo"}
-        return(error)
+        result = {"result": "Error info id Iine denmas_geo"}
+        return(result)
         
 def sendPhotoxy_382(paht):
     try:
@@ -1030,8 +1030,8 @@ def sendPhotoxy_382(paht):
             }
             return(result)
     except:
-        error = {"result": "Error info id Iine denmas_geo"}
-        return(error)
+        result = {"result": "Error info id Iine denmas_geo"}
+        return(result)
         
 def sendPhotoxy_349(path1):
     try:
@@ -1053,8 +1053,8 @@ def sendPhotoxy_349(path1):
             }
             return(result)
     except:
-        error = {"result": "Error info id Iine denmas_geo"}
-        return(error)
+        result = {"result": "Error info id Iine denmas_geo"}
+        return(result)
         
 def sendPhotoxy_345(path1,text):
     try:
@@ -1076,8 +1076,8 @@ def sendPhotoxy_345(path1,text):
             }
             return(result)
     except:
-        error = {"result": "Error info id Iine denmas_geo"}
-        return(error)
+        result = {"result": "Error info id Iine denmas_geo"}
+        return(result)
         
  #===eeeerr!=====================================
 def sendbook(path,text,text1):
