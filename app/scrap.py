@@ -559,6 +559,7 @@ def sendPhotoxy_231(path1,text):
     except:
         result = {"result": "Error info id Iine denmas_geo"}
         return(result)
+        
 def sendPhotoxy_181(path1,text):
     try:
         link = "https://photooxy.com/other-design/create-your-own-mastery-7-avatar-181.html"
