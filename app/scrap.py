@@ -49,11 +49,13 @@ def apitiny(query):
     ghd = requests.post(link,option, headers=headers).text
     urlnya = getStr(ghd,'<div id="success"></div><br><small>[<a href="','" target="_blank" rel="nofollow">')
     result = {
+        "statu": "OKE COK__!",
+        "creator": "Rey",
         "result":{
             "url": "%s" % urlnya
         }
     }
-    return result
+    return(result)
     
 def img(query):
 	imagedata = []
@@ -547,10 +549,10 @@ def sendPhotoxy_231(path1,text):
         urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_~@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', cok)
         for url in urls:
             mek = unquote(url).replace("%", "")
-            res = tinyurl(mek)
+            res = requests.get('https://tinyurl.com/api-create.php?url=%s'mek)
             result = {
                 "result": {
-                    "linkUrl": res
+                    "linkUrl": res.text
                 },
                 "creator": "geo, rey",
                 "status": "OKE COK___!"
@@ -570,10 +572,10 @@ def sendPhotoxy_181(path1,text):
         urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_~@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', cok)
         for url in urls:
             mek = unquote(url).replace("%", "")
-            res = tinyurl(mek)
+            res = requests.get('https://tinyurl.com/api-create.php?url=%s' mek)
             result = {
                 "result": {
-                    "linkUrl": res
+                    "linkUrl": res.text
                 },
                 "creator": "geo, rey",
                 "status": "OKE COK___!"
@@ -593,10 +595,10 @@ def sendPhotoxy_384(path1):
         urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_~@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', cok)
         for url in urls:
             mek = unquote(url).replace("%", "")
-            res = tinyurl(mek)
+            res = requests.get('https://tinyurl.com/api-create.php?url=%s'mek)
             result = {
                 "result": {
-                    "linkUrl": res
+                    "linkUrl": res.text
                 },
                 "creator": "geo, rey",
                 "status": "OKE COK___!"
