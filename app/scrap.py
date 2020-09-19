@@ -554,7 +554,6 @@ def sendPhotoxy_231(path1,text):
     except:
         result = {"result": "Error info id Iine denmas_geo"}
         return(result)
-        
 def sendPhotoxy_181(path1,text):
     try:
         link = "https://photooxy.com/other-design/create-your-own-mastery-7-avatar-181.html"
@@ -599,10 +598,8 @@ def sendPhotoxy_384(path1):
     except:
         result = {"result": "Error info id Iine denmas_geo"}
         return(result)
-		
 def sendPhotoxy_128(text):
 	try:
-		#headers = {"user-agent": hander}
 		link = "https://photooxy.com/league-of-legends/make-your-logo-pentakill-lol-128.html"
 		numku = str(random.randint(1, 7))
 		anu = ['ff0066','00c6ff','00ff0c','ff5a00','ba00ff','ff00f6']
@@ -626,10 +623,32 @@ def sendPhotoxy_128(text):
 	except:
 		result = {"result": "Error info id Iine denmas_geo"}
 		return(result)
-	    
+def sendPhotoxy_118(text):
+	try:
+	    link = "https://photooxy.com/other-design/create-metallic-text-glow-online-188.html"
+	    option = {'text_1': text, 'login': 'OK'}
+	    ghd = requests.post(link,option, headers=headers).text
+	    mek = getStr(ghd,'<input type="hidden"  style= "padding:3px; width:100%;" name="share_link" value="','" id="share_link">')
+	    cok = mek.split("-")[0]
+	    urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_~@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', cok)
+	    for url in urls:
+	        mek = unquote(url).replace("%", "")
+	        res = requests.get('https://tinyurl.com/api-create.php?url=%s' %mek)
+	        result = {
+	            "result": {
+	                "linkUrl": res.text
+	            },
+	            "creator": "geo, rey","status": "OKE COK___!"
+	        }
+	        return(result)
+	except:
+	       result = {"result": "Error info id Iine denmas_geo"}
+	       return(result)
+
+
+
 def sendValday(path,text):
 	try:
-		#headers = {"user-agent": hander}
 		link = "https://m.photofunia.com/categories/valentines_day/valentine"
 		option = {'effect-form js-effect-form': 'input-file', 'image': path,'text': text, 'button-container': 'GO'}
 		ck = requests.post(link,option, headers=headers).text

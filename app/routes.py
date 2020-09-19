@@ -221,6 +221,13 @@ def rest_sendLogo():
 	this_path = request.args['text']
 	this_rest = scrap.sendLogo(this_path)
 	return json.dumps(this_rest, indent=4, sort_keys=True)
+
+@app.route('/api_logo2',methods=['POST','GET'])
+def rest_sendPhotoxy_188():
+	this_path = request.args['text']
+	this_rest = scrap.sendPhotoxy_188(this_path)
+	return json.dumps(this_rest, indent=4, sort_keys=True)
+	
 #===========[FOTOFUNIA]============
 @app.route('/photofun/breaking-news',methods=['POST','GET'])
 def rest_sendNews():
