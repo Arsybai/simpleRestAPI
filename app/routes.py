@@ -247,6 +247,12 @@ def rest_sendPhotoxy_193():
 	this_rest = scrap.sendPhotoxy_193(this_path)
 	return json.dumps(this_rest, indent=4, sort_keys=True)
 	
+@app.route('/api_pensil',methods=['POST','GET'])
+def rest_sendPhotoxy_226():
+	this_path = request.args['url']
+	this_rest = scrap.sendPhotoxy_226(this_path)
+	return json.dumps(this_rest, indent=4, sort_keys=True)
+	
 #===========[FOTOFUNIA]============
 @app.route('/photofun/breaking-news',methods=['POST','GET'])
 def rest_sendNews():

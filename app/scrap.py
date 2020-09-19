@@ -716,6 +716,30 @@ def sendPhotoxy_193(path1):
 	except:
 	       result = {"result": "Error info id Iine denmas_geo"}
 	       return(result)
+		
+def sendPhotoxy_226(path):
+	try:
+	    link = "https://photooxy.com/art-effects/sketch-your-picture-on-paper-226.html"
+	    option = {'selectImage_1': 'btn btn-primary selectButton style_button_1', 'image_1': path, 'login': 'OK'}
+	    ghd = requests.post(link,option, headers=headers).text
+	    mek = getStr(ghd,'<input type="hidden"  style= "padding:3px; width:100%;" name="share_link" value="','" id="share_link">')
+	    cok = mek.split("-")[0]
+	    urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_~@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', cok)
+	    for url in urls:
+	        mek = unquote(url).replace("%", "")
+	        res = requests.get('https://tinyurl.com/api-create.php?url=%s' %mek)
+	        result = {
+                "result": {
+                    "linkUrl": res.text
+                },
+                "creator": "geo, rey",
+                "status": "OKE COK___!"
+	        }
+	        return(result)
+	except:
+	       result = {"result": "Error info id Iine denmas_geo"}
+	       return(result)
+        
 #==============================================
 def sendValday(path,text):
 	try:
@@ -848,6 +872,7 @@ def sendClowers(path,text):
 	except:
 		result = {"result": "Error info id Iine denmas_geo"}
 		return(result)
+        
 #==========================================
 def sendPhotoxy_345(path1,text):
     try:
