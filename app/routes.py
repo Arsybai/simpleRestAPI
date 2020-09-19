@@ -210,19 +210,6 @@ def rest_sendPhotoxy_181():
 	this_rest = scrap.sendPhotoxy_181(this_path, this_path1)
 	return json.dumps(this_rest, indent=4, sort_keys=True)
 	
-@app.route('/api_iphone',methods=['POST','GET'])
-def rest_sendPhotoxy_181():
-	this_path = request.args['url']
-	this_rest = scrap.sendPhotoxy_181(this_path)
-	return json.dumps(this_rest, indent=4, sort_keys=True)
-	
-@app.route('/api_coverfb',methods=['POST','GET'])
-def rest_sendPhotoxy_301():
-	this_path = request.args['url']
-	this_path1 = request.args['text']
-	this_rest = scrap.sendPhotoxy_301(this_path, this_path1)
-	return json.dumps(this_rest, indent=4, sort_keys=True)
-	
 @app.route('/api_beautiful',methods=['POST','GET'])
 def rest_sendPhotoxy_384():
 	this_path = request.args['url']
