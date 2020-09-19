@@ -644,9 +644,52 @@ def sendPhotoxy_118(text):
 	except:
 	       result = {"result": "Error info id Iine denmas_geo"}
 	       return(result)
-
-
-
+def sendPhotoxy_349(path1):
+	try:
+	    link = "https://photooxy.com/photo-frames/simple-pip-frame-349.html"
+	    option = {'selectImage_2': 'btn btn-primary selectButton style_button_2', 'image_2': path1,'login': 'OK'}
+	    ghd = requests.post(link,option, headers=headers).text
+	    mek = getStr(ghd,'<input type="hidden"  style= "padding:3px; width:100%;" name="share_link" value="','" id="share_link">')
+	    cok = mek.split("-")[0]
+	    urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_~@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', cok)
+	    for url in urls:
+	       mek = unquote(url).replace("%", "")
+	       res = requests.get('https://tinyurl.com/api-create.php?url=%s' %mek)
+	       result = {
+                "result": {
+                    "linkUrl": res.text
+                },
+                "creator": "geo, rey",
+                "status": "OKE COK___!"
+	       }
+	       return(result)
+	except:
+	       result = {"result": "Error info id Iine denmas_geo"}
+	       return(result)
+	       
+def sendPhotoxy_301(path1,text):
+	try:
+	    link = "https://photooxy.com/other-design/combined-cover-and-avatar-301.html"
+	    option = {'selectImage_0': 'btn btn-primary selectButton style_button_0', 'image_0': path1,'text_3': text, 'login': 'OK'}
+	    ghd = requests.post(link,option, headers=headers).text
+	    mek = getStr(ghd,'<div class="alert alert-info" role="alert">','<a class = "btn btn-default"')
+	    cok = mek.split("-")[0]
+	    urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_~@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', cok)
+	    for url in urls:
+	        mek = unquote(url).replace("%", "")
+	        res = requests.get('https://tinyurl.com/api-create.php?url=%s' %mek)
+	        result = {
+                "result": {
+                    "linkUrl": res.text
+                },
+                "creator": "geo, rey",
+                "status": "OKE COK___!"
+	        }
+	        return(result)
+	except:
+	       result = {"result": "Error info id Iine denmas_geo"}
+	       return(result)
+#==============================================
 def sendValday(path,text):
 	try:
 		link = "https://m.photofunia.com/categories/valentines_day/valentine"

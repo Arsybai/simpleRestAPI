@@ -223,9 +223,22 @@ def rest_sendLogo():
 	return json.dumps(this_rest, indent=4, sort_keys=True)
 
 @app.route('/api_logo2',methods=['POST','GET'])
-def rest_sendPhotoxy_188():
+def rest_sendPhotoxy_118():
 	this_path = request.args['text']
-	this_rest = scrap.sendPhotoxy_188(this_path)
+	this_rest = scrap.sendPhotoxy_118(this_path)
+	return json.dumps(this_rest, indent=4, sort_keys=True)
+	
+@app.route('/api_background',methods=['POST','GET'])
+def rest_sendPhotoxy_349():
+	this_path = request.args['url']
+	this_rest = scrap.sendPhotoxy_349(this_path)
+	return json.dumps(this_rest, indent=4, sort_keys=True)
+	
+@app.route('/api_coverfb',methods=['POST','GET'])
+def rest_sendPhotoxy_301():
+	this_path = request.args['url']
+	this_path1 = request.args['text']
+	this_rest = scrap.sendPhotoxy_301(this_path, this_path1)
 	return json.dumps(this_rest, indent=4, sort_keys=True)
 	
 #===========[FOTOFUNIA]============
