@@ -234,6 +234,7 @@ def rest_sendPhotoxy_118():
 	this_path = request.args['text']
 	this_rest = scrap.sendPhotoxy_118(this_path)
 	return json.dumps(this_rest, indent=4, sort_keys=True)
+	"""
 @app.route('/api/logo3',methods=['POST','GET'])
 def rest_sendPhotoxy_116():
 	this_path = request.args['text']
@@ -254,6 +255,7 @@ def rest_sendPhotoxy_171():
 	this_path = request.args['text']
 	this_rest = scrap.sendPhotoxy_171(this_path)
 	return json.dumps(this_rest, indent=4, sort_keys=True)
+	"""
 @app.route('/api_background',methods=['POST','GET'])
 def rest_sendPhotoxy_349():
 	this_path = request.args['url']
@@ -275,6 +277,7 @@ def rest_sendPhotoxy_226():
 	this_path = request.args['url']
 	this_rest = scrap.sendPhotoxy_226(this_path)
 	return json.dumps(this_rest, indent=4, sort_keys=True)
+	"""
 @app.route('/api/frame',methods=['POST','GET'])
 def rest_sendPhotoxy_349():
 	this_path = request.args['url']
@@ -290,7 +293,7 @@ def rest_sendPhotoxy_148():
 	this_path = request.args['url']
 	this_rest = scrap.sendPhotoxy_148(this_path)
 	return json.dumps(this_rest, indent=4, sort_keys=True)
-	
+	"""
 #===========[FOTOFUNIA]============
 @app.route('/photofun/breaking-news',methods=['POST','GET'])
 def rest_sendNews():
