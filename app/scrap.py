@@ -602,7 +602,8 @@ def sendPhotoxy_231(path1,text):
     except:
         result = {"result": "Error info id Iine denmas_geo"}
         return(result)
-def sendPhotoxy_181(path1,text):
+        
+def sendPhotoxy_118(path1,text):
     try:
         link = "https://photooxy.com/other-design/create-your-own-mastery-7-avatar-181.html"
         option = {'selectImage_1': 'btn btn-primary selectButton style_button_1', 'image_1': path1, 'text_4': text, 'login': 'OK'}
@@ -693,7 +694,10 @@ def sendPhotoxy_170(text):
 	except:
 	       result = {"result": "Error info id Iine denmas_geo"}
 	       return(result)
-def sendPhotoxy_118(text):
+#def sendPhotoxy_188(path1):
+#    try:
+
+def sendPhotoxy_188(path1):
 	try:
 	    link = "https://photooxy.com/other-design/create-metallic-text-glow-online-188.html"
 	    option = {'text_1': text, 'login': 'OK'}
