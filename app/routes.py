@@ -85,7 +85,7 @@ def rest_apitiny():
 @app.route('/api_cuaca',methods=['POST','GET'])
 def rest_Tzone():
 	this_query = request.args['kota']
-	this_rest = scrap.Tzine(this_query)
+	this_rest = scrap.Tzone(this_query)
 	return json.dumps(this_rest, indent=4, sort_keys=True)
 	
 #===========[ ZMedia ]================
