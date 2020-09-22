@@ -224,80 +224,68 @@ def rest_sendPhotoxy_384():
 	this_rest = scrap.sendPhotoxy_384(this_path)
 	return json.dumps(this_rest, indent=4, sort_keys=True)
 	
-@app.route('/api_logo1',methods=['POST','GET'])
+@app.route('/api/logo1',methods=['POST','GET'])
 def rest_sendLogo():
 	this_path = request.args['text']
 	this_rest = scrap.sendLogo(this_path)
 	return json.dumps(this_rest, indent=4, sort_keys=True)
-	
-@app.route('/api_logo2',methods=['POST','GET'])
+@app.route('/api/logo2',methods=['POST','GET'])
 def rest_sendPhotoxy_118():
 	this_path = request.args['text']
 	this_rest = scrap.sendPhotoxy_118(this_path)
 	return json.dumps(this_rest, indent=4, sort_keys=True)
-	
-@app.route('/api_logo3',methods=['POST','GET'])
+@app.route('/api/logo3',methods=['POST','GET'])
 def rest_sendPhotoxy_116():
 	this_path = request.args['text']
 	this_rest = scrap.sendPhotoxy_116(this_path)
 	return json.dumps(this_rest, indent=4, sort_keys=True)
-	
-@app.route('/api_logo4',methods=['POST','GET'])
+@app.route('/api/logo4',methods=['POST','GET'])
 def rest_sendPhotoxy_174():
 	this_path = request.args['text']
 	this_rest = scrap.sendPhotoxy_174(this_path)
 	return json.dumps(this_rest, indent=4, sort_keys=True)
-	
-@app.route('/api_logo5',methods=['POST','GET'])
+@app.route('/api/logo5',methods=['POST','GET'])
 def rest_sendPhotoxy_170():
 	this_path = request.args['text']
 	this_rest = scrap.sendPhotoxy_170(this_path)
 	return json.dumps(this_rest, indent=4, sort_keys=True)
-	
-@app.route('/api_logo6',methods=['POST','GET'])
+@app.route('/api/logo6',methods=['POST','GET'])
 def rest_sendPhotoxy_171():
 	this_path = request.args['text']
 	this_rest = scrap.sendPhotoxy_171(this_path)
 	return json.dumps(this_rest, indent=4, sort_keys=True)
-	
 @app.route('/api_background',methods=['POST','GET'])
 def rest_sendPhotoxy_349():
 	this_path = request.args['url']
 	this_rest = scrap.sendPhotoxy_349(this_path)
 	return json.dumps(this_rest, indent=4, sort_keys=True)
-	
 @app.route('/api_coverfb',methods=['POST','GET'])
 def rest_sendPhotoxy_301():
 	this_path = request.args['url']
 	this_path1 = request.args['text']
 	this_rest = scrap.sendPhotoxy_301(this_path, this_path1)
 	return json.dumps(this_rest, indent=4, sort_keys=True)
-	
 @app.route('/api_burned',methods=['POST','GET'])
 def rest_sendPhotoxy_193():
 	this_path = request.args['url']
 	this_rest = scrap.sendPhotoxy_193(this_path)
 	return json.dumps(this_rest, indent=4, sort_keys=True)
-	
 @app.route('/api_pensil',methods=['POST','GET'])
 def rest_sendPhotoxy_226():
 	this_path = request.args['url']
 	this_rest = scrap.sendPhotoxy_226(this_path)
 	return json.dumps(this_rest, indent=4, sort_keys=True)
-	
-@app.route('/api_frame',methods=['POST','GET'])
+@app.route('/api/frame',methods=['POST','GET'])
 def rest_sendPhotoxy_349():
 	this_path = request.args['url']
 	this_rest = scrap.sendPhotoxy_349(this_path)
 	return json.dumps(this_rest, indent=4, sort_keys=True)
-	
-@app.route('/api_mockup',methods=['POST','GET'])
+@app.route('/api/mockup',methods=['POST','GET'])
 def rest_sendPhotoxy_398():
 	this_path = request.args['url']
 	this_rest = scrap.sendPhotoxy_398(this_path)
 	return json.dumps(this_rest, indent=4, sort_keys=True)
-	
-@app.route('/api_pokemon',methods=['POST','GET'])
+@app.route('/api/pokemon',methods=['POST','GET'])
 def rest_sendPhotoxy_148():
 	this_path = request.args['url']
 	this_rest = scrap.sendPhotoxy_148(this_path)
