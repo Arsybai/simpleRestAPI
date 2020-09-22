@@ -239,7 +239,6 @@ def rest_sendPhotoxy_116():
 	this_path = request.args['text']
 	this_rest = scrap.sendPhotoxy_116(this_path)
 	return json.dumps(this_rest, indent=4, sort_keys=True)
-	"""
 @app.route('/api/logo4',methods=['POST','GET'])
 def rest_sendPhotoxy_174():
 	this_path = request.args['text']
@@ -255,7 +254,7 @@ def rest_sendPhotoxy_171():
 	this_path = request.args['text']
 	this_rest = scrap.sendPhotoxy_171(this_path)
 	return json.dumps(this_rest, indent=4, sort_keys=True)
-	"""
+	
 @app.route('/api_background',methods=['POST','GET'])
 def rest_sendPhotoxy_349():
 	this_path = request.args['url']
