@@ -558,50 +558,50 @@ def sendChamp(text):
 		result = {"result": "Error info id Iine denmas_geo"}
 		return(result)
 def sendPhotoxy_143(text):
-    try:
-        link = "https://photooxy.com/league-of-legends/wings-avatar-lol-effect-143.html"
-        numku = str(random.randint(1, 444))
-        option = {'optionNumber_0': numku , 'text_2': text, 'login': 'OK'}
-        ghd = requests.post(link,option, headers=headers).text
-        rey = getStr(ghd,'<div class="alert alert-info" role="alert">','<a class = "btn btn-default"')
-        cok = rey.split("-")[0]
-        urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_~@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', cok)
-        for url in urls:
-            mek = unquote(url).replace("%", "")
-            res = requests.get('https://tinyurl.com/api-create.php?url=%s' % mek)
-            result = {
+	try:
+	    link = "https://photooxy.com/league-of-legends/wings-avatar-lol-effect-143.html"
+	    numku = str(random.randint(1, 444))
+	    option = {'optionNumber_0': numku , 'text_2': text, 'login': 'OK'}
+	    ghd = requests.post(link,option, headers=headers).text
+	    rey = getStr(ghd,'<div class="alert alert-info" role="alert">','<a class = "btn btn-default"')
+	    cok = rey.split("-")[0]
+	    urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_~@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', cok)
+	    for url in urls:
+	        mek = unquote(url).replace("%", "")
+	        res = requests.get('https://tinyurl.com/api-create.php?url=%s' % mek)
+	        result = {
 		        "result": {
 		            "linkUrl": res.text
 		        },
 		        "creator": "geo, rey, hans, fino",
 		        "status": "OKE COK___!"
-            }
-            return(result)
-    except:
-        result = {"result": "Error info id Iine denmas_geo"}
-        return(result)
+	        }
+	        return(result)
+	except:
+	    result = {"result": "Error info id Iine denmas_geo"}
+	    return(result)
 def sendPhotoxy_231(path1,text):
-    try:
-        link = "https://photooxy.com/league-of-legends/make-flame-avatar-with-your-photo-231.html"
-        option = {'selectImage_1': 'btn btn-primary selectButton style_button_1', 'image_1': path1, 'text_4': text, 'login': 'OK'}
-        ghd = requests.post(link,option, headers=headers).text
-        mek = getStr(ghd,'<div class="alert alert-info" role="alert">','<a class = "btn btn-default"')
-        cok = mek.split("-")[0]
-        urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_~@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', cok)
-        for url in urls:
-            mek = unquote(url).replace("%", "")
-            res = requests.get('https://tinyurl.com/api-create.php?url=%s' %mek)
-            result = {
+	try:
+	    link = "https://photooxy.com/league-of-legends/make-flame-avatar-with-your-photo-231.html"
+	    option = {'selectImage_1': 'btn btn-primary selectButton style_button_1', 'image_1': path1, 'text_4': text, 'login': 'OK'}
+	    ghd = requests.post(link,option, headers=headers).text
+	    mek = getStr(ghd,'<div class="alert alert-info" role="alert">','<a class = "btn btn-default"')
+	    cok = mek.split("-")[0]
+	    urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_~@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', cok)
+	    for url in urls:
+	        mek = unquote(url).replace("%", "")
+	        res = requests.get('https://tinyurl.com/api-create.php?url=%s' %mek)
+	        result = {
                 "result": {
                     "linkUrl": res.text
                 },
                 "creator": "geo, rey",
                 "status": "OKE COK___!"
-            }
-            return(result)
-    except:
-        result = {"result": "Error info id Iine denmas_geo"}
-        return(result)
+	        }
+	        return(result)
+	except:
+	       result = {"result": "Error info id Iine denmas_geo"}
+	       return(result)
         
 def sendPhotoxy_118(path1,text):
     try:
@@ -626,53 +626,53 @@ def sendPhotoxy_118(path1,text):
         result = {"result": "Error info id Iine denmas_geo"}
         return(result)
 def sendPhotoxy_384(path1):
-    try:
-        link = "https://photooxy.com/photo-frames/beautiful-pine-leaf-frame-384.html"
-        option = {'selectImage_1': 'btn btn-primary selectButton style_button_1', 'image_1': path1, 'login': 'OK'}
-        ghd = requests.post(link,option, headers=headers).text
-        mek = getStr(ghd,'<div class="alert alert-info" role="alert">','<a class = "btn btn-default"')
-        cok = mek.replace(' ','').replace('\n','').split("-")[0]
-        urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_~@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', cok)
-        for url in urls:
-            mek = unquote(url).replace("%", "")
-            res = requests.get('https://tinyurl.com/api-create.php?url=%s' %mek)
-            result = {
+	try:
+	    link = "https://photooxy.com/photo-frames/beautiful-pine-leaf-frame-384.html"
+	    option = {'selectImage_1': 'btn btn-primary selectButton style_button_1', 'image_1': path1, 'login': 'OK'}
+	    ghd = requests.post(link,option, headers=headers).text
+	    mek = getStr(ghd,'<div class="alert alert-info" role="alert">','<a class = "btn btn-default"')
+	    cok = mek.replace(' ','').replace('\n','').split("-")[0]
+	    urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_~@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', cok)
+	    for url in urls:
+	        mek = unquote(url).replace("%", "")
+	        res = requests.get('https://tinyurl.com/api-create.php?url=%s' %mek)
+	        result = {
                 "result": {
                     "linkUrl": res.text
                 },
                 "creator": "geo, rey",
                 "status": "OKE COK___!"
-            }
-            return(result)
-    except:
-        result = {"result": "Error info id Iine denmas_geo"}
-        return(result)
+	        }
+	        return(result)
+	except:
+	       result = {"result": "Error info id Iine denmas_geo"}
+	       return(result)
 #===================================
 def sendPhotoxy_128(text):
-    try:
-        link = "https://photooxy.com/league-of-legends/make-your-logo-pentakill-lol-128.html"
-        numku = str(random.randint(1, 7))
-        anu = ['ff0066','00c6ff','00ff0c','ff5a00','ba00ff','ff00f6']
-        wr = random.choice(anu)
-        option = {'optionNumber_0': numku , 'text_3': text, 'filter_3_1': wr,'login': 'OK'}
-        ghd = requests.post(link,option, headers=headers).text
-        rey = getStr(ghd,'<div class="alert alert-info" role="alert">','<a class = "btn btn-default"')
-        cok = rey.split("-")[0]
-        urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_~@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', cok)
-        for url in urls:
-            mek = unquote(url).replace("%", "")
-            res = requests.get('https://tinyurl.com/api-create.php?url=%s' % mek)
-            result = {
+	try:
+	    link = "https://photooxy.com/league-of-legends/make-your-logo-pentakill-lol-128.html"
+	    numku = str(random.randint(1, 7))
+	    anu = ['ff0066','00c6ff','00ff0c','ff5a00','ba00ff','ff00f6']
+	    wr = random.choice(anu)
+	    option = {'optionNumber_0': numku , 'text_3': text, 'filter_3_1': wr,'login': 'OK'}
+	    ghd = requests.post(link,option, headers=headers).text
+	    rey = getStr(ghd,'<div class="alert alert-info" role="alert">','<a class = "btn btn-default"')
+	    cok = rey.split("-")[0]
+	    urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_~@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', cok)
+	    for url in urls:
+	        mek = unquote(url).replace("%", "")
+	        res = requests.get('https://tinyurl.com/api-create.php?url=%s' % mek)
+	        result = {
                 "result": {
                     "linkUrl": res.text
                 },
                 "creator": "geo, rey, hans, fino",
                 "status": "OKE COK___!"
-            }
-            return(result)
-    except:
-        result = {"result": "Error info id Iine denmas_geo"}
-        return(result)
+	        }
+	        return(result)
+	except:
+	    result = {"result": "Error info id Iine denmas_geo"}
+	    return(result)
 def sendPhotoxy_170(text):
 	try:
 	    link = "https://photooxy.com/logo-and-text-effects/smoke-typography-text-effect-170.html"
@@ -698,7 +698,7 @@ def sendPhotoxy_170(text):
 #    try:
 
 def sendPhotoxy_188(path1):
-    try:
+	try:
 	    link = "https://photooxy.com/other-design/create-metallic-text-glow-online-188.html"
 	    option = {'text_1': text, 'login': 'OK'}
 	    ghd = requests.post(link,option, headers=headers).text
@@ -715,10 +715,10 @@ def sendPhotoxy_188(path1):
 	            "creator": "geo, rey","status": "OKE COK___!"
 	        }
 	        return(result)
-    except:
-	       result = {"result": "Error info id Iine denmas_geo"}
-	       return(result)
-	       
+	except:
+	    result = {"result": "Error info id Iine denmas_geo"}
+	    return(result)
+#===============================[][][][][][][][][]========
 def sendPhotoxy_222(text):
     try:
 	    link = "https://photooxy.com/banner-cover/graffiti-text-cover-222.html"
