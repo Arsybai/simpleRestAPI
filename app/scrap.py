@@ -536,10 +536,10 @@ def zodiak(search):
 	except:
 		result = {"result": "Error info id Iine denmas_geo"}
 		return(result)
-		
+		"""
 def sendSmule(text):
 	try:
-		smule = "https://sing.salon/smule-downloader/?url={}".format(urllib.parse.quote(text))
+		smule = f"https://sing.salon/smule-downloader/?url={text}"
 		r = urllib.request.urlopen(text)
 		rs = r.read().decode()
 		type = "%s"% getStr(rs,'"type":"','"')
@@ -616,6 +616,7 @@ def sendSmule(text):
 	except:
 		result = {"result": "Error info id Iine denmas_geo"}
 		return(result)
+		"""
 #========================
 def sendLogo(text):
 	try:
