@@ -87,6 +87,16 @@ def rest_Tzone():
 	this_query = request.args['kota']
 	this_rest = scrap.Tzone(this_query)
 	return json.dumps(this_rest, indent=4, sort_keys=True)
+@app.route('/api_smule',methods=['POST','GET'])
+def rest_sendSmule():
+	this_query = request.args['url']
+	this_rest = scrap.sendSmule(this_query)
+	return json.dumps(this_rest, indent=4, sort_keys=True)
+@app.route('/api_zodiak',methods=['POST','GET'])
+def rest_zodiak():
+	this_query = request.args['zodiak']
+	this_rest = scrap.zodiak(this_query)
+	return json.dumps(this_rest, indent=4, sort_keys=True)
 	
 #===========[ ZMedia ]================
 @app.route('/artiname',methods=['POST','GET'])
@@ -292,6 +302,11 @@ def rest_sendPhotoxy_398():
 def rest_sendPhotoxy_148():
 	this_path = request.args['url']
 	this_rest = scrap.sendPhotoxy_148(this_path)
+	return json.dumps(this_rest, indent=4)
+@app.route('/api/frome',methods=['POST','GET'])
+def rest_sendPhotoxy_349():
+	this_path = request.args['url']
+	this_rest = scrap.sendPhotoxy_349(this_path)
 	return json.dumps(this_rest, indent=4)
 	
 #===========[FOTOFUNIA]============
