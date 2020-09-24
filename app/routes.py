@@ -111,7 +111,19 @@ def rest_ingempa():
 	this_path = request.args['page']
 	this_rest = scrap.ingempa(this_path)
 	return json.dumps(this_rest, indent=4, sort_keys=True)
-	
+
+@app.route('/api/smuledl',methods=['POST','GET'])
+def rest_sendSmule():
+    this_query = request.args['url']
+    this_rest = scrap.sendSmule(this_query)
+    return json.dumps(this_rest, indent=4, sort_keys=True)
+    
+@app.route('/api/zodiak',methods=['POST','GET'])
+def rest_zodiak():
+    this_query = request.args['zodiak']
+    this_rest = scrap.zodiak(this_query)
+    return json.dumps(this_rest, indent=4, sort_keys=True)	
+#====#==##=#=================================
 @app.route('/textavatar',methods=['POST','GET'])
 def rest_textVideo():
 	this_query = request.args['query']
