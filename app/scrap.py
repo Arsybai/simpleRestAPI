@@ -570,49 +570,26 @@ def sendSmule(text):
             r = s.get(smule)
             data = BeautifulSoup(r.content, 'html5lib')
             get = data.select("a[href*=https://www.smule.com/redir?]")[0]
-            data1 = {"type":type}
-            if 'audio' in data1["type"]:
-                result = {
-                    "status": "OKE COK__!",
-                    "creator": "GEO",
-                    "result": {
-                        "urlmusic": get['href'],
-                        "urlimg":mek,
-                        "title":title,
-                        "message":mseg,
-                        "type":type,
-                        "type_sing":type1,
-                        "singBy":perforby,
-                        "start": {
-                            "loves":loves,
-                            "listens":listens,
-                            "comments":comments,
-                            "performers":performers
-                        }
-                    }
+            result = {
+                "status": "OKE COK__!",
+                "creator": "GEO",
+                "result": {
+                    "urlmusic": get['href'],
+                    "urlimg":mek,
+                    "title":title,
+                    "message":mseg,
+                    "type":type,
+                    "type_sing":type1,
+                    "singBy":perforby,
+                    "start": {
+                        "loves":loves,
+                        "listens":listens,
+                        "comments":comments,
+                        "performers":performers
+                    },
                 }
-                return(result)
-            else:
-                result = {
-                    "status": "OKE COK__!",
-                    "creator": "GEO",
-                    "result": {
-                        "urlmusic": get['href'],
-                        "urlimg":mek,
-                        "title":title,
-                        "message":mseg,
-                        "type":type,
-                        "type_sing":type1,
-                        "singBy":perforby,
-                        "start": {
-                            "loves":loves,
-                            "listens":listens,
-                            "comments":comments,
-                            "performers":performers
-                        }
-                    }
-                }
-                return(result)
+            }
+            return(result)
     except:
         result = {"result": "Error info id Iine denmas_geo"}
         return(result)
