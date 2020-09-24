@@ -288,11 +288,7 @@ def rest_sendPhotoxy_226():
 	this_path = request.args['url']
 	this_rest = scrap.sendPhotoxy_226(this_path)
 	return json.dumps(this_rest, indent=4, sort_keys=True)
-@app.route('/api/frame',methods=['POST','GET'])
-def rest_sendPhotoxy_349():
-	this_path = request.args['url']
-	this_rest = scrap.sendPhotoxy_349(this_path)
-	return json.dumps(this_rest, indent=4, sort_keys=True)
+	
 @app.route('/api/mockup',methods=['POST','GET'])
 def rest_sendPhotoxy_398():
 	this_path = request.args['url']
