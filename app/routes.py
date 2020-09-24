@@ -87,11 +87,13 @@ def rest_Tzone():
 	this_query = request.args['kota']
 	this_rest = scrap.Tzone(this_query)
 	return json.dumps(this_rest, indent=4, sort_keys=True)
+	"""
 @app.route('/api_smule',methods=['POST','GET'])
 def rest_sendSmule():
 	this_query = request.args['url']
 	this_rest = scrap.sendSmule(this_query)
 	return json.dumps(this_rest, indent=4, sort_keys=True)
+	"""
 @app.route('/api_zodiak',methods=['POST','GET'])
 def rest_zodiak():
 	this_query = request.args['zodiak']
