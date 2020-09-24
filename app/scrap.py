@@ -546,7 +546,8 @@ def sendSmule(text):
         title = "%s"% getStr(rs,'"title":"','"')
         mseg = "%s"% getStr(rs,'"message":"','"')
         type1 = "%s"% getStr(rs,'"ensemble_type":"','"')
-        perforby = "%s"% getStr(rs,'"performed_by":"','"')
+        cretetime = "%s"% getStr(rs,'"created_at":"','"')
+        perforby = "%s"% getStr(rs,'"handle":"','"')
         loves = "%s"% getStr(rs,'"truncated_loves":"','"')
         listens = "%s"% getStr(rs,'"truncated_listens":"','"')
         comments = "%s"% getStr(rs,'"truncated_comments":"','"')
@@ -581,6 +582,7 @@ def sendSmule(text):
                     "type":type,
                     "type_sing":type1,
                     "singBy":perforby,
+                    "cretetime":cretetime,
                     "start": {
                         "loves":loves,
                         "listens":listens,
