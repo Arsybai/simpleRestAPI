@@ -506,7 +506,7 @@ def ingempa(detil):
 	except:
 		result = {"result": "Error info id Iine denmas_geo"}
 		return(result)
-		
+		"""
 def zodiak(search):
 	try:
 	    response = requests.get('https://www.fimela.com/zodiak/%s'%(search), headers=headers).text
@@ -536,7 +536,6 @@ def zodiak(search):
 	except:
 		result = {"result": "Error info id Iine denmas_geo"}
 		return(result)
-		"""
 def sendSmule(text):
 	try:
 		smule = f"https://sing.salon/smule-downloader/?url={text}"
