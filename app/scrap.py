@@ -506,6 +506,116 @@ def ingempa(detil):
 	except:
 		result = {"result": "Error info id Iine denmas_geo"}
 		return(result)
+		
+def zodiak(search):
+    try:
+        response = requests.get('https://www.fimela.com/zodiak/%s'%(search), headers=headers).text
+        Name = getStr(response, '<h5 class="zodiac__random__title">', '</h5>')
+        Tgll = getStr(response, '<span class="zodiac__random__date">','</span>')
+        Kesehatan = getStr(response, '<div class="zodiac__readpage__content"><p>', '</p>')
+        mGal = getStr(response, '<h5 class="zodiac__readpage__title-header">Love</h5></div><div class="zodiac__readpage__content"><p>', '</p>')
+        aTn = getStr(response, '<h5 class="zodiac__readpage__title-header">Keuangan</h5></div><div class="zodiac__readpage__content"><p>', '</p>')
+        saT = getStr(response, '<span class="zodiac__readpage-numbers">', '</span>')
+        wB = getStr(response, 'class="zodiac__random__img" data-src="', '</a>')
+        anu = str(mGal).replace("Couple: ","\nCouple: ").replace("<br><br>","").replace("Couple : ","\nCouple: ")
+        au = str(wB).replace('">','')
+        result = {
+	        "status": "OKE COK___!",
+	        "creator": "GEO",
+	        "result": {
+	            "zodiak": "%s"% (Name),
+	            "tanggal": "%s"% (Tgll),
+	            "kesehatan": "%s"% (Kesehatan),
+	            "couple": "%s"% (anu),
+	            "keuagan": "%s"% (aTn),
+	            "nomer": "%s"% (saT),
+	            "url_link": "%s"% (au)
+	        }
+        }
+        return(result)
+    except:
+        result = {"result": "Error info id Iine denmas_geo"}
+        return(result)
+		
+def sendSmule(text):
+    try:
+        smule = f"https://sing.salon/smule-downloader/?url={text}"
+        r = urllib.request.urlopen(text)
+        rs = r.read().decode()
+        type = "%s"% getStr(rs,'"type":"','"')
+        title = "%s"% getStr(rs,'"title":"','"')
+        mseg = "%s"% getStr(rs,'"message":"','"')
+        type1 = "%s"% getStr(rs,'"ensemble_type":"','"')
+        perforby = "%s"% getStr(rs,'"performed_by":"','"')
+        loves = "%s"% getStr(rs,'"truncated_loves":"','"')
+        listens = "%s"% getStr(rs,'"truncated_listens":"','"')
+        comments = "%s"% getStr(rs,'"truncated_comments":"','"')
+        performers = "%s"% getStr(rs,'"truncated_other_performers":"','"')
+        tuu = urllib.request.urlopen(smule)
+        dus = tuu.read().decode()
+        aku = "%s"% getStr(dus,'<img src="https://www.smule.com/redir?','"')
+        anu = str(aku).replace("amp;","")
+        mek = f'https://www.smule.com/redir?{anu}'
+        with requests.session() as s:
+            s.headers=[{
+		  		'User-Agent': 'Mozilla/5.0 (Windows NT 6.2; Win64; x64; rv:74.0) Gecko/20100101 Firefox/74.0',
+		  		'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+		  		'Accept-Language': 'id,en-US;q=0.7,en;q=0.3',
+		  		'Connection': 'keep-alive',
+		  		'Upgrade-Insecure-Requests': '1',
+		  		'Pragma': 'no-cache',
+		  		'Cache-Control': 'no-cache',
+		  		'TE': 'Trailers'
+            }]
+            r = s.get(smule)
+            data = BeautifulSoup(r.content, 'html5lib')
+            get = data.select("a[href*=https://www.smule.com/redir?]")[0]
+            data1 = {"type":type}
+            if 'audio' in data1["type"]:
+                result = {
+                    "status": "OKE COK__!",
+                    "creator": "GEO",
+                    "result": {
+                        "urlmusic": get['href'],
+                        "urlimg":mek,
+                        "title":title,
+                        "message":mseg,
+                        "type":type,
+                        "type_sing":type1,
+                        "singBy":perforby,
+                        "start": {
+                            "loves":loves,
+                            "listens":listens,
+                            "comments":comments,
+                            "performers":performers
+                        }
+                    }
+                }
+                return(result)
+            else:
+                result = {
+                    "status": "OKE COK__!",
+                    "creator": "GEO",
+                    "result": {
+                        "urlmusic": get['href'],
+                        "urlimg":mek,
+                        "title":title,
+                        "message":mseg,
+                        "type":type,
+                        "type_sing":type1,
+                        "singBy":perforby,
+                        "start": {
+                            "loves":loves,
+                            "listens":listens,
+                            "comments":comments,
+                            "performers":performers
+                        }
+                    }
+                }
+                return(result)
+    except:
+        result = {"result": "Error info id Iine denmas_geo"}
+        return(result)
 #========================
 def sendLogo(text):
 	try:
