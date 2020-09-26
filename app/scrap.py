@@ -27,8 +27,42 @@ headers = {
 #host = 'https://gxx.line.naver.jp'
 #qrEndpoint = '/acct/lgn/sq/v1'
 #verifierEndpoint = '/acct/lp/lgn/sq/v1'
-	
+
+host = 'https://api.photofunia.com'
+params = {
+    'access_key': 'e3084acf282e8323181caa61fa305b2a',
+    'lang': 'en'
+}
+bool_dict = {
+    True: ['yes', 'active'],
+    False: ['no', 'deactive']
+}
+path = {
+    'watercolour-text': '/2.0/effects/watercolour-text',
+    'number-plate': '/2.0/effects/number-plate',
+    'two-valentines': '/2.0/effects/two-valentines',
+    'snow-globe': '/2.0/effects/snow-globe'
+}
 #=========================================================
+#===============
+def urlEncode(url, path, params=[]):
+    return url + path + '?' + urllib.parse.urlencode(params)
+
+def optionsContent(url, data=None, headers=None):
+    return _session.options(url, headers=headers, data=data)
+
+def postContent(url, data=None, files=None, headers=None):
+    return _session.post(url, headers=headers, data=data, files=files)
+
+def getContent(url, headers=None):
+    return _session.get(url, headers=headers, stream=True)
+
+def deleteContent(self, url, data=None, headers=None):
+    return _session.delete(url, headers=headers, data=data)
+
+def putContent(self, url, data=None, headers=None):
+    return _session.put(url, headers=headers, data=data)
+
 def getStr(string,start,end, index = 1):
 	try:
 		str = string.split(start)
@@ -48,13 +82,48 @@ def apitiny(query):
     ghd = requests.post(link,option, headers=headers).text
     urlnya = getStr(ghd,'<div id="success"></div><br><small>[<a href="','" target="_blank" rel="nofollow">')
     result = {
-        "statu": "OKE COK__!",
-        "creator": "Rey",
+        "status": "OKE COK__!",
+        "creator": "GEO, Rey",
         "result":{
             "url": "%s" % urlnya
         }
     }
     return(result)
+
+def snow_globe(text1,text2,image):
+	try:
+	   url = urlEncode(host, path['snow-globe'], params)
+	   data = {'text1': text1, 'text2': text2, 'animation': 'animated'}
+	   files = {'image': open(image, 'rb')}
+	   response = postContent(url, data=data, files=files).json()
+	   anu = f"{response['response']['images']['regular']['url']}"
+	   result = {
+	       "result":{
+	           "linkUrl": anu
+	       }
+	   }
+	   return(result)
+	except:
+		result = {"result": "Error info id Iine denmas_geo"}
+		return(result)
+def number_plate(text,colour):
+    try:
+        url = urlEncode(host, path['number-plate'], params)
+        data = {'text': text, 'colour': colour}
+        files = {'image': 'image'}
+        response = postContent(url, data=data, files=files).json()
+        anu = f"{response['response']['images']['large']['url']}"
+        result = {
+            "status": "OKE COK___!",
+            "creator": "Alakadare",
+            "result":{
+                "linkUrl": anu
+            }
+        }
+        return(result)
+    except:
+        result = {"result": "Error info id Iine denmas_geo"}
+        return(result)
     
 def img(query):
 	imagedata = []

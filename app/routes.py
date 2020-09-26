@@ -129,7 +129,14 @@ def rest_textVideo():
 	this_query = request.args['query']
 	this_rest = scrap.textVideo(this_query)
 	return json.dumps(this_rest, indent=4, sort_keys=True)
-	
+
+@app.route('/api/numberplate',methods=['POST','GET'])
+def rest_photo():
+    this_text = request.args['text']
+    this_text1 = request.args['color']
+    this_rest = scrap.number_plate(this_text, this_text1)
+    return json.dumps(this_rest, indent=4, sort_keys=True)
+    
 @app.route('/photofun/valentines_day',methods=['POST','GET'])
 def rest_sendValday():
 	this_path = request.args['path']
