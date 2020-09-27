@@ -138,7 +138,7 @@ def starMaker(text):
                 "status": "OKE COK___!",
                 "creator": "Hans, Geo",
                 "result":{
-                    "link": anu
+                    "link": mek
                 }
             }
             return(result)
