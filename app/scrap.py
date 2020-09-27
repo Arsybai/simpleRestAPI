@@ -127,8 +127,8 @@ def number_plate(text,colour):
 def starMaker(text):
     try:
         link = 'https://www.starmakerdownloader.com/'
-        #data =str(bawuk)
-        option = {'full_url': text, 'submit1': 'submit-button'}
+        data =str(text)
+        option = {'full_url': data, 'submit1': 'submit-button'}
         resp = requests.post(link,option, headers=headers).text
         hnn = getStr(resp,'<input type="button" class="btn btn-primary" onclick="location.href=','" value="Download">')
         urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_~@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', hnn)
