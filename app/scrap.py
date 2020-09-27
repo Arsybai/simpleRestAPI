@@ -124,7 +124,28 @@ def number_plate(text,colour):
     except:
         result = {"result": "Error info id Iine denmas_geo"}
         return(result)
-    
+def starMaker(text):
+    try:
+        link = 'https://www.starmakerdownloader.com/'
+        #data =str(bawuk)
+        option = {'full_url': text, 'submit1': 'submit-button'}
+        resp = requests.post(link,option, headers=headers).text
+        hnn = getStr(resp,'<input type="button" class="btn btn-primary" onclick="location.href=','" value="Download">')
+        urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_~@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', hnn)
+        for url in urls:
+            mek = unquote(url).replace("%", "")
+            result = {
+                "status": "OKE COK___!",
+                "creator": "Hans, Geo",
+                "result":{
+                    "link": anu
+                }
+            }
+            return(result)
+    except:
+        result = {"result": "Error info id Iine denmas_geo"}
+        return(result)
+        
 def img(query):
 	imagedata = []
 	link = requests.get("https://api.qwant.com/api/search/images",

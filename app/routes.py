@@ -71,6 +71,12 @@ def rest_VideoDL():
 	this_rest = scrap.VideoDL(this_query)
 	return json.dumps(this_rest, indent=4, sort_keys=True)
 	
+@app.route('/api/starmacker',methods=['POST','GET'])
+def rest_starMaker():
+    this_query = requests.args["url"]
+    this_rest = scrap.starMaker(this_query)
+    return json.dumps(this_rest, indent=4, sort_keys=True)
+    
 @app.route('/randomimg',methods=['POST','GET'])
 def rest_randomimg():
 	this_query = request.args['query']
@@ -131,7 +137,7 @@ def rest_textVideo():
 	return json.dumps(this_rest, indent=4, sort_keys=True)
 
 @app.route('/api/numberplate',methods=['POST','GET'])
-def rest_photo():
+def rest_number_plate():
     this_text = request.args['text']
     this_text1 = request.args['color']
     this_rest = scrap.number_plate(this_text, this_text1)
