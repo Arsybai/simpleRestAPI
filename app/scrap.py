@@ -511,9 +511,9 @@ def sendIgram(url):
 		
 def Tzone(query):
 	try:
-	    url1 = f"https://api.worldweatheronline.com/premium/v1/past-weather.ashx?key=31720ec755f54622a1e120030202009&q={query}&format=json&num_of_days=1"
-	    url2 = f"https://api.worldweatheronline.com/premium/v1/search.ashx?key=31720ec755f54622a1e120030202009&q={query}&format=json"
-	    url3 = f"http://api.worldweatheronline.com/premium/v1/tz.ashx?key=31720ec755f54622a1e120030202009&q={query}&format=json"
+	    url1 = f"https://api.worldweatheronline.com/premium/v1/weather.ashx?key=06d71a5c868642a7bce92003201010&q={query}&format=json&num_of_days=5"
+	    url2 = f"https://api.worldweatheronline.com/premium/v1/search.ashx?key=06d71a5c868642a7bce92003201010&q={query}&format=json"
+	    url3 = f"http://api.worldweatheronline.com/premium/v1/tz.ashx?key=06d71a5c868642a7bce92003201010&q={query}&format=json"
 	    anu = json.loads(requests.get(url3).text)
 	    data = json.loads(requests.get(url2).text)
 	    data1 = json.loads(requests.get(url1).text)
