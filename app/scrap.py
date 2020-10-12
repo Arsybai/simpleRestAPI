@@ -148,7 +148,26 @@ def starMaker(text):
     except:
         result = {"result": "Error info id Iine denmas_geo"}
         return(result)
-        
+def apiHanders():
+    chrome = "2.3.9"
+    dekmac = "6.3.1"
+    dekwin = "6.3.2"
+    iosipad = "10.16.2"
+    ios = "10.16.2"
+    result = {
+        "result": {
+            "CHROME": chrome,
+            "DESKTOPMAC": dekmac,
+            "DESKTOPWIN": dekwin,
+            "IOSIPAD": iosipad,
+            "IOS": ios
+        },
+        "creator": "geo usa_Bots",
+        "status": "OKE COK____!",
+        "info": "Sewaktu bisa Upgrate, list 5 henders"
+    }
+    return(result)
+     
 def img(query):
 	imagedata = []
 	link = requests.get("https://api.qwant.com/api/search/images",
@@ -457,8 +476,8 @@ def VideoDL(page):
 	   result ={
             "result":{
                 "linkUrl": res.text,
-                "image": title,
-                "title": fto,
+                "image": fto,
+                "title": title,
                 "info": info
             },
             "creator": "geo, rey, hans",
