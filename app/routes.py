@@ -15,15 +15,6 @@ def rest_image():
 	this_rest = scrap.img(this_query)
 	return json.dumps(this_rest, indent=4, sort_keys=True)
 	#json.dumps(this_rest, indent=4, sort_keys=True)
-	
-@app.route('/api/sholat',methods=['POST','GET'])
-def rest_kodePost():
-	this_query = request.args['kota']
-	this_query1 = request.args['tahun']
-	this_query2 = request.args['bln']
-	this_query3 = request.args['tgl']
-	this_rest = scrap.kodePost(this_query,this_query1,this_query2,this_query3)
-	return json.dumps(this_rest, indent=4, sort_keys=True)
 @app.route('/api/kodepos',methods=['POST','GET'])
 def rest_kodePost():
 	this_query = request.args['kota']
