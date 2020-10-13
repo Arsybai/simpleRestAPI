@@ -16,6 +16,16 @@ def rest_image():
 	return json.dumps(this_rest, indent=4, sort_keys=True)
 	#json.dumps(this_rest, indent=4, sort_keys=True)
 	
+@app.route('/api/quranlist',methods=['POST','GET'])
+def rest_Quranlist():
+	this_query = request.args['result']
+	this_rest = scrap.Quranlist(this_query)
+	return json.dumps(this_rest, indent=4, sort_keys=True)
+@app.route('/api/quran',methods=['POST','GET'])
+def rest_Quran():
+	this_query = request.args['number']
+	this_rest = scrap.Quran(this_query)
+	return json.dumps(this_rest, indent=4, sort_keys=True)
 @app.route('/api/news',methods=['POST','GET'])
 def rest_newsSindo():
 	this_query = request.args['search']

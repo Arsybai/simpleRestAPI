@@ -109,6 +109,7 @@ def snow_globe(text1,text2,image):
 	except:
 		result = {"result": "Error info id Iine denmas_geo"}
 		return(result)
+		
 def number_plate(text,colour):
     try:
         url = urlEncode(host, path['number-plate'], params)
@@ -203,6 +204,63 @@ def sendSimisimi(query):
 		"status": "OKE COK___!"
     }
     return(result)
+def Quran(query):
+    try:
+        data = json.loads(requests.get(f"https://raw.githubusercontent.com/penggguna/QuranJSON/master/surah/{query}.json").text)
+        audio = data["recitations"][0]["audio_url"]
+        nama = data["name"]
+        result =[]
+        for anu in data['verses']:
+            number = anu['number']
+            ayat = anu['text']
+            idtr = anu["translation_id"]
+            entr = anu["translation_en"]
+            resul ={
+                "number": number,
+                "ayat": ayat,
+                "translate_id": idtr,
+                "translate_en": entr
+            }
+            result.append(resul)
+        dta ={
+            "name_surah": nama,
+            "resulte": result,
+            "audio": audio,
+            "status": "OKE COK___!",
+            "creator": "GEO"
+        }
+        return(dta)
+    except:
+        result = {"result": "Error info id Iine denmas_geo"}
+        return(result)
+def Quranlist(quran):
+    try:
+        data = json.loads(requests.get(f"https://raw.githubusercontent.com/penggguna/QuranJSON/master/{quran}.json").text)
+        result =[]
+        for anu in data:
+            nam = anu["name"]
+            nametr = anu["name_translations"]["id"]
+            jum = anu["number_of_ayah"]
+            ayt = anu["number_of_surah"]
+            audio = anu["recitation"]
+            resul ={
+                "surah": nam,
+                "translate_id": nametr,
+                "jumlah_ayat": jum,
+                "ayat": ayt,
+                "link_audio": audio
+            }
+            result.append(resul)
+        dta ={
+            "resulte": result,
+            "status": "OKE COK___!",
+            "creator": "GEO"
+        }
+        return(dta)
+    except:
+        result = {"result": "Error info id Iine denmas_geo"}
+        return(result)
+
 def newsSindo(query):
 	url = "https://berita-news.herokuapp.com/search/?q=%s"% (query)
 	rest =[]
