@@ -149,26 +149,6 @@ def starMaker(text):
     except:
         result = {"result": "Error info id Iine denmas_geo"}
         return(result)
-def apiHanders():
-    chrome = "2.3.9"
-    dekmac = "6.3.1"
-    dekwin = "6.3.2"
-    iosipad = "10.16.2"
-    ios = "10.16.2"
-    result = {
-        "result": {
-            "CHROME": chrome,
-            "DESKTOPMAC": dekmac,
-            "DESKTOPWIN": dekwin,
-            "IOSIPAD": iosipad,
-            "IOS": ios
-        },
-        "creator": "geo usa_Bots",
-        "status": "OKE COK____!",
-        "info": "Sewaktu bisa Upgrate, list 5 henders"
-    }
-    return(result)
-     
 def img(query):
 	imagedata = []
 	link = requests.get("https://api.qwant.com/api/search/images",
@@ -194,7 +174,6 @@ def img(query):
 	   }
 	   imagedata.append(ret)
 	return(imagedata)
-
 def sendSimisimi(query):
     data = json.loads(requests.get(f"http://mnazria.herokuapp.com/api/simi?text={query}").text)
     anu = random.choice(data)
@@ -204,37 +183,6 @@ def sendSimisimi(query):
 		"status": "OKE COK___!"
     }
     return(result)
-def Adzan(kota,th,bl,tgl):
-    try:
-        anu = json.loads(requests.get(f"https://raw.githubusercontent.com/lakuapik/jadwalsholatorg/master/adzan/{kota}/{th}/{bl}/{tgl}.json").text)
-        imsy = anu["imsyak"]
-        subuh = anu["shubuh"]
-        trbit = anu["terbit"]
-        dha = anu["dhuha"]
-        dzu = anu["dzuhur"]
-        asr = anu["ashr"]
-        magr = anu["magrib"]
-        isa = anu["isya"]
-        tg = anu["tanggal"]
-        data = {
-            "creator": "GEO",
-            "status": "Oke………!",
-            "resulte": {
-                "imsyak": imsy,
-		        "shubuh": subuh,
-		        "terbit": trbit,
-		        "dhuha": dha,
-		        "dzuhur": dzu,
-		        "ashar": asr,
-		        "magrib": magr,
-		        "isya": isa,
-		        "tanggal": tg
-            }
-        }
-        return(data)
-    except:
-        result = {"result": "Error info id Iine denmas_geo"}
-        return(result)
 def kodePost(cty):
     try:
         data = json.loads(requests.get(f"https://kodepos.now.sh/?q={cty}").text)
@@ -260,7 +208,6 @@ def kodePost(cty):
     except:
         result = {"result": "Error info id Iine denmas_geo"}
         return(result)
-        
 def Quran(query):
     try:
         data = json.loads(requests.get(f"https://raw.githubusercontent.com/penggguna/QuranJSON/master/surah/{query}.json").text)
