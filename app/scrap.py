@@ -183,6 +183,37 @@ def sendSimisimi(query):
 		"status": "OKE COK___!"
     }
     return(result)
+def Adzan(kota,th,bl,tgl):
+    try:
+        anu = json.loads(requests.get(f"https://raw.githubusercontent.com/lakuapik/jadwalsholatorg/master/adzan/{kota}/{th}/{bl}/{tgl}.json").text)
+        imsy = anu["imsyak"]
+        subuh = anu["shubuh"]
+        trbit = anu["terbit"]
+        dha = anu["dhuha"]
+        dzu = anu["dzuhur"]
+        asr = anu["ashr"]
+        magr = anu["magrib"]
+        isa = anu["isya"]
+        tg = anu["tanggal"]
+        data = {
+            "creator": "GEO",
+            "status": "Oke………!",
+            "resulte": {
+                "imsyak": imsy,
+                "shubuh": subuh,
+                "terbit": trbit,
+                "dhuha": dha,
+                "dzuhur": dzu,
+                "ashar": asr,
+                "magrib": magr,
+                "isya": isa,
+                "tanggal": tg
+            }
+        }
+        return(data)
+    except:
+        result = {"result": "Error info id Iine denmas_geo"}
+        return(result)
 def kodePost(cty):
     try:
         data = json.loads(requests.get(f"https://kodepos.now.sh/?q={cty}").text)
