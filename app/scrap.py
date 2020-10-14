@@ -787,7 +787,7 @@ def sendSmule(text):
         smule = f"https://sownloader.com/index.php?url={text}"
         r = urllib.request.urlopen(text)
         rs = r.read().decode()
-        picture ="%s"% getStr(rs,'"pic_url":"','",')
+        picture ="%s"% getStr(rs,'"cover_url":"','",')
         type = "%s"% getStr(rs,'"type":"','"')
         title = "%s"% getStr(rs,'"title":"','"')
         mseg = "%s"% getStr(rs,'"message":"','"')
@@ -847,7 +847,7 @@ def smule(urlink):
 	try:
 	    r = urllib.request.urlopen(urlink)
 	    rs = r.read().decode()
-	    picture ="%s"% getStr(rs,'"pic_url":"','",')
+	    picture ="%s"% getStr(rs,'"cover_url":"','",')
 	    USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:65.0) Gecko/20100101 Firefox/65.0"
 	    headers = {"user-agent": USER_AGENT}
 	    smule = requests.get(urlink, headers=headers)
