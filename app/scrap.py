@@ -781,6 +781,68 @@ def zodiak(search):
     except:
         result = {"result": "Error info id Iine denmas_geo"}
         return(result)
+
+def sendSmule(text):
+    try:
+        smule = f"https://sownloader.com/index.php?url={text}"
+        r = urllib.request.urlopen(text)
+        rs = r.read().decode()
+        picture ="%s"% getStr(rs,'"pic_url":"','",')
+        type = "%s"% getStr(rs,'"type":"','"')
+        title = "%s"% getStr(rs,'"title":"','"')
+        mseg = "%s"% getStr(rs,'"message":"','"')
+        type1 = "%s"% getStr(rs,'"ensemble_type":"','"')
+        cretetime = "%s"% getStr(rs,'"created_at":"','"')
+        perforby = "%s"% getStr(rs,'"handle":"','"')
+        loves = "%s"% getStr(rs,'"truncated_loves":"','"')
+        listens = "%s"% getStr(rs,'"truncated_listens":"','"')
+        comments = "%s"% getStr(rs,'"truncated_comments":"','"')
+        performers = "%s"% getStr(rs,'"truncated_other_performers":"','"')
+        with requests.session() as s:
+            s.headers=[{
+		  		'User-Agent': 'Mozilla/5.0 (Windows NT 6.2; Win64; x64; rv:74.0) Gecko/20100101 Firefox/74.0',
+		  		'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+		  		'Accept-Language': 'id,en-US;q=0.7,en;q=0.3',
+		  		'Connection': 'keep-alive',
+		  		'Upgrade-Insecure-Requests': '1',
+		  		'Pragma': 'no-cache',
+		  		'Cache-Control': 'no-cache',
+		  		'TE': 'Trailers'
+            }]
+            r = s.get(smule)
+            soup = BeautifulSoup(r.content, "html.parser")
+            hh = soup.findAll("div", class_="col-md-12")
+            for z in hh:
+                list = z.find_all("a")
+                if list:
+                    fex = list[0]["href"]
+                    urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_~@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', fex)
+                    for url in urls:
+                        cok = url.split('&')[0]
+            result = {
+                "status": "OKE COK__!",
+                "creator": "GEO",
+                "result": {
+                    "urlmusic": cok,
+                    "urlimg": picture,
+                    "title":title,
+                    "message":mseg,
+                    "type":type,
+                    "type_sing":type1,
+                    "singBy":perforby,
+                    "cretetime":cretetime,
+                    "start": {
+                        "loves":loves,
+                        "listens":listens,
+                        "comments":comments,
+                        "performers":performers
+                    },
+                }
+            }
+            return(result)
+    except:
+        result = {"result": "Error info id Iine denmas_geo"}
+        return(result)
 def smule(urlink):
 	try:
 	    r = urllib.request.urlopen(urlink)
