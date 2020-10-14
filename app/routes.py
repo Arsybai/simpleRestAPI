@@ -151,9 +151,9 @@ def rest_ingempa():
 	return json.dumps(this_rest, indent=4, sort_keys=True)
 
 @app.route('/api/smuledl',methods=['POST','GET'])
-def rest_sendSmule():
+def rest_smule():
     this_query = request.args['url']
-    this_rest = scrap.sendSmule(this_query)
+    this_rest = scrap.smule(this_query)
     return json.dumps(this_rest, indent=4, sort_keys=True)
     
 @app.route('/api/zodiak',methods=['POST','GET'])

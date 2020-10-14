@@ -781,65 +781,52 @@ def zodiak(search):
     except:
         result = {"result": "Error info id Iine denmas_geo"}
         return(result)
-		
-def sendSmule(text):
-    try:
-        smule = f"https://sing.salon/smule-downloader/?url={text}"
-        r = urllib.request.urlopen(text)
-        rs = r.read().decode()
-        type = "%s"% getStr(rs,'"type":"','"')
-        title = "%s"% getStr(rs,'"title":"','"')
-        mseg = "%s"% getStr(rs,'"message":"','"')
-        type1 = "%s"% getStr(rs,'"ensemble_type":"','"')
-        cretetime = "%s"% getStr(rs,'"created_at":"','"')
-        perforby = "%s"% getStr(rs,'"handle":"','"')
-        loves = "%s"% getStr(rs,'"truncated_loves":"','"')
-        listens = "%s"% getStr(rs,'"truncated_listens":"','"')
-        comments = "%s"% getStr(rs,'"truncated_comments":"','"')
-        performers = "%s"% getStr(rs,'"truncated_other_performers":"','"')
-        tuu = urllib.request.urlopen(smule)
-        dus = tuu.read().decode()
-        aku = "%s"% getStr(dus,'<img src="https://www.smule.com/redir?','"')
-        anu = str(aku).replace("amp;","")
-        mek = f'https://www.smule.com/redir?{anu}'
-        with requests.session() as s:
-            s.headers=[{
-		  		'User-Agent': 'Mozilla/5.0 (Windows NT 6.2; Win64; x64; rv:74.0) Gecko/20100101 Firefox/74.0',
-		  		'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-		  		'Accept-Language': 'id,en-US;q=0.7,en;q=0.3',
-		  		'Connection': 'keep-alive',
-		  		'Upgrade-Insecure-Requests': '1',
-		  		'Pragma': 'no-cache',
-		  		'Cache-Control': 'no-cache',
-		  		'TE': 'Trailers'
-            }]
-            r = s.get(smule)
-            data = BeautifulSoup(r.content, 'html5lib')
-            get = data.select("a[href*=https://www.smule.com/redir?]")[0]
-            result = {
-                "status": "OKE COK__!",
-                "creator": "GEO",
-                "result": {
-                    "urlmusic": get['href'],
-                    "urlimg":mek,
-                    "title":title,
-                    "message":mseg,
-                    "type":type,
-                    "type_sing":type1,
-                    "singBy":perforby,
-                    "cretetime":cretetime,
-                    "start": {
-                        "loves":loves,
-                        "listens":listens,
-                        "comments":comments,
-                        "performers":performers
-                    },
-                }
-            }
-            return(result)
-    except:
-        result = {"result": "Error info id Iine denmas_geo"}
-        return(result)
+def smule(urlink):
+	try:
+	    r = urllib.request.urlopen(urlink)
+	    rs = r.read().decode()
+	    picture ="%s"% getStr(rs,'"pic_url":"','",')
+	    USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:65.0) Gecko/20100101 Firefox/65.0"
+	    headers = {"user-agent": USER_AGENT}
+	    smule = requests.get(urlink, headers=headers)
+	    rc ="%s"% getStr(smule.text,'<meta name="twitter:player:stream:content_type" content="','<meta name="twitter:player:height"')
+	    resp = requests.get("https://sownloader.com/index.php?url={}".format(str(urlink)), headers=headers)
+	    soup = BeautifulSoup(resp.content, "html.parser")
+	    hh = soup.findAll("div", class_="col-md-12")
+	    rx ="%s"% getStr(smule.text,'"created_at":"','",')
+	    a ="%s"% getStr(smule.text,'"performed_by":"','",')
+	    b ="%s"% getStr(smule.text,'"total_comments":',',')
+	    c ="%s"% getStr(smule.text,'"total_listens":',',')
+	    d ="%s"% getStr(smule.text,'"total_loves":',',')
+	    e ="%s"% getStr(smule.text,'"artist":"','",')
+	    f ="%s"% getStr(smule.text,'"title":"','",')
+	    for z in hh:
+	        list = z.find_all("a")
+	        if list:
+	            fex = list[0]["href"]
+	            urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_~@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', fex)
+	            for url in urls:
+	                cok = url.split('&')[0]
+	    result ={
+	        "title": f,
+	        "artis": e,
+	        "performers": a,
+	        "listens": c,
+	        "loves": d,
+	        "comments": b,
+	        "time": rx,
+	        "urlmusic": cok,
+	        "urlimg": picture
+	    }
+	    data = {
+	        "result": result,
+	        "creator": "GEO",
+	        "status": "OKE COK____!"
+	    }
+	    return(data)
+	except:
+	    result = {"result": "Error info id Iine denmas_geo"}
+	    return(result)
 #========================
 def sendLogo(text):
 	try:
