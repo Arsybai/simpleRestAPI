@@ -15,6 +15,12 @@ def rest_image():
 	this_rest = scrap.img(this_query)
 	return json.dumps(this_rest, indent=4, sort_keys=True)
 	#json.dumps(this_rest, indent=4, sort_keys=True)
+@app.route('/api/yt_search',methods=['POST','GET'])
+def rest_yt_search():
+    this_query = request.args['query']
+    this_rest = scrap.yt_search(this_query)
+    return json.dumps(this_rest, indent=4, sort_keys=True)
+
 @app.route('/api/kodepos',methods=['POST','GET'])
 def rest_kodePost():
 	this_query = request.args['kota']
