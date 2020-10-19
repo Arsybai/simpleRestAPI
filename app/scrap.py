@@ -295,7 +295,33 @@ def Quranlist(quran):
     except:
         result = {"result": "Error info id Iine denmas_geo"}
         return(result)
-
+        
+def yt_search(query):
+    from youtube_searcher import search_youtube
+    data = search_youtube(query)
+    result = []
+    for anu in data["videos"]:
+        url = f'{anu["url"]}'
+        title = f'{anu["title"]}'
+        des = f'{anu["description"]}'
+        leng = f'{anu["length"]}'
+        img = f'https://i.ytimg.com/vi/{anu["videoId"]}/hq720.jpg'
+        videoid = f'{anu["videoId"]}'
+        jsonnya = {
+            "link": url,
+            "title": title,
+            "description": des,
+            "creat_at": leng,
+            "link_img": img,
+            "videoID": videoid
+        }
+        result.append(jsonnya)
+    hasil = {
+            "creator": "GEO",
+            "status": "Okeeee.....!",
+            "result": result
+    }
+    return(hasil)
 def newsSindo(query):
 	url = "https://berita-news.herokuapp.com/search/?q=%s"% (query)
 	rest =[]
