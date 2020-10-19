@@ -39,3 +39,4 @@ wikipedia
 paramiko
 python-axolotl-curve25519
 pycryptodome
+youtube_searcher
