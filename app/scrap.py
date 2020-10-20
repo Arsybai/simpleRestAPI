@@ -295,6 +295,18 @@ def Quranlist(quran):
     except:
         result = {"result": "Error info id Iine denmas_geo"}
         return(result)
+def listYt(query):
+    from geo import search_youtube
+    data = search_youtube(query)
+    result = []
+    for anu in data["videos"]:
+        result.append(anu)
+        data = {
+            "creator": "GEO",
+            "status": "OKE___!",
+            "result": result
+        }
+        return(data)
         
 def yt_search(query):
     from youtube_searcher import search_youtube
