@@ -822,7 +822,7 @@ def zodiak(search):
 
 def sendSmule(text):
     try:
-        smule = f"https://sownloader.com/index.php?url={text}"
+        #smule = f"https://sownloader.com/index.php?url={text}"
         r = urllib.request.urlopen(text)
         rs = r.read().decode()
         picture ="%s"% getStr(rs,'"cover_url":"','",')
@@ -837,8 +837,8 @@ def sendSmule(text):
         comments = "%s"% getStr(rs,'"truncated_comments":"','"')
         performers = "%s"% getStr(rs,'"truncated_other_performers":"','"')
         url_original = "https://www.smule.com/redir?e=1&t={}.".format(int(time.time()))
-        hasil ="%s"% line.getStr(rs,'"web_url":"','",')
-        media_url ="%s"% line.getStr(rs,'"media_url":"','",')
+        hasil ="%s"% getStr(rs,'"web_url":"','",')
+        media_url ="%s"% getStr(rs,'"media_url":"','",')
         web_url = "https://www.smule.com"+str(hasil)
         url_parse1 = web_url.replace(":","%3A").replace("/","%2F")
         if('=' in str(media_url)):
