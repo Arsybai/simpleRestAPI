@@ -836,28 +836,20 @@ def sendSmule(text):
         listens = "%s"% getStr(rs,'"truncated_listens":"','"')
         comments = "%s"% getStr(rs,'"truncated_comments":"','"')
         performers = "%s"% getStr(rs,'"truncated_other_performers":"','"')
-        with requests.session() as s:
-            s.headers=[{
-		  		'User-Agent': 'Mozilla/5.0 (Windows NT 6.2; Win64; x64; rv:74.0) Gecko/20100101 Firefox/74.0',
-		  		'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-		  		'Accept-Language': 'id,en-US;q=0.7,en;q=0.3',
-		  		'Connection': 'keep-alive',
-		  		'Upgrade-Insecure-Requests': '1',
-		  		'Pragma': 'no-cache',
-		  		'Cache-Control': 'no-cache',
-		  		'TE': 'Trailers'
-            }]
-            r = s.get(smule)
-            soup = BeautifulSoup(r.content, "html.parser")
-            hh = soup.findAll("div", class_="col-md-12")
-            for z in hh:
-                list = z.find_all("a")
-                if list:
-                    fex = list[0]["href"]
-                    urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_~@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', fex)
-                    for url in urls:
-                        cok = url.split('&')[0]
-            result = {
+        url_original = "https://www.smule.com/redir?e=1&t={}.".format(int(time.time()))
+        hasil ="%s"% line.getStr(rs,'"web_url":"','",')
+        media_url ="%s"% line.getStr(rs,'"media_url":"','",')
+        web_url = "https://www.smule.com"+str(hasil)
+        url_parse1 = web_url.replace(":","%3A").replace("/","%2F")
+        if('=' in str(media_url)):
+            url_parse2 = media_url.replace(":","%3A").replace("+","%2B").replace("=","%3D")
+        else:
+            url_parse2 = media_url.replace(":","%3A").replace("+","%2B")
+        if "video" not in type:
+            cok = url_original+url_parse1+url_streams+url_parse2
+        else:
+            cok = url_original+url_parse1+url_streams+url_parse2
+        result = {
                 "status": "OKE COK__!",
                 "creator": "GEO",
                 "result": {
@@ -876,8 +868,8 @@ def sendSmule(text):
                         "performers":performers
                     },
                 }
-            }
-            return(result)
+        }
+        return(result)
     except:
         result = {"result": "Error info id Iine denmas_geo"}
         return(result)
