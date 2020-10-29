@@ -822,7 +822,6 @@ def zodiak(search):
 
 def sendSmule(text):
     try:
-        #smule = f"https://sownloader.com/index.php?url={text}"
         r = urllib.request.urlopen(text)
         rs = r.read().decode()
         picture ="%s"% getStr(rs,'"cover_url":"','",')
