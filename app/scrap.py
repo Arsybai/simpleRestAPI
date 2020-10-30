@@ -838,11 +838,12 @@ def sendSmule(text):
         url_original = "https://www.smule.com/redir?e=1&t={}.".format(int(time.time()))
         hasil ="%s"% getStr(rs,'"web_url":"','",')
         media_url ="%s"% getStr(rs,'"media_url":"','",')
+        video_media_mp4_url ="%s"% getStr(rs,'"video_media_mp4_url":"','",')
         web_url = "https://www.smule.com"+str(hasil)
         url_parse1 = web_url.replace(":","%3A").replace("/","%2F")
         url_streams = ".tw_stream&url="
-        if('=' in str(media_url)):
-            url_parse2 = media_url.replace(":","%3A").replace("+","%2B").replace("=","%3D")
+        if('=' in str(video_media_mp4_url)):
+            url_parse2 = video_media_mp4_url.replace(":","%3A").replace("+","%2B").replace("=","%3D")
         else:
             url_parse2 = media_url.replace(":","%3A").replace("+","%2B")
         if "video" not in type:
@@ -873,6 +874,7 @@ def sendSmule(text):
     except:
         result = {"result": "Error info id Iine denmas_geo"}
         return(result)
+        
 def smule(urlink):
 	try:
 	    r = urllib.request.urlopen(urlink)
