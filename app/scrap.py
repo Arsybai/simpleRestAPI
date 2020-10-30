@@ -819,7 +819,6 @@ def zodiak(search):
     except:
         result = {"result": "Error info id Iine denmas_geo"}
         return(result)
-
 def sendSmule(text):
     try:
         r = urllib.request.urlopen(text)
@@ -874,7 +873,6 @@ def sendSmule(text):
     except:
         result = {"result": "Error info id Iine denmas_geo"}
         return(result)
-        
 def smule(urlink):
 	try:
 	    r = urllib.request.urlopen(urlink)
