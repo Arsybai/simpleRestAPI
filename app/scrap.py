@@ -861,7 +861,7 @@ def sendSmule(text):
         web_url = "https://www.smule.com"+str(hasil)
         url_parse1 = web_url.replace(":","%3A").replace("/","%2F")
         url_streams = ".tw_stream&url="
-        if('e:' in str(video_media_mp4_url)):
+        if('=' in str(video_media_mp4_url)):
             url_parse2 = video_media_mp4_url.replace(":","%3A").replace("+","%2B").replace("=","%3D")
         else:
             url_parse2 = media_url.replace(":","%3A").replace("+","%2B")
