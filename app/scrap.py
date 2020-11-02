@@ -863,9 +863,8 @@ def sendSmule(text):
         url_streams = ".tw_stream&url="
         if('e:' in str(video_media_mp4_url)):
             url_parse2 = video_media_mp4_url.replace(":","%3A").replace("+","%2B").replace("=","%3D")
-        else:
-            url_parse2 = media_url.replace(":","%3A").replace("+","%2B")
-        if "video" not in type:
+        else: url_parse2 = media_url.replace(":","%3A").replace("+","%2B").replace("=","%3D")
+        if("audio" in str(type)):
             cok = url_original+url_parse1+url_streams+url_parse2
         else:
             cok = smuleLinkUrl(text)
