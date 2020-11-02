@@ -819,6 +819,26 @@ def zodiak(search):
     except:
         result = {"result": "Error info id Iine denmas_geo"}
         return(result)
+        
+def smuleLinkUrl(url):
+		r = urllib.request.urlopen(url)
+		rs = r.read().decode()
+		try:
+		    type = "%s"% getStr(rs,'"type":"','"')
+		    url_original = "https://www.smule.com/redir?e=1&t={}.".format(int(time.time()))
+		    hasil ="%s"% getStr(rs,'"web_url":"','",')
+		    media_url ="%s"% getStr(rs,'"media_url":"','",')
+		    video_media_mp4_url ="%s"% getStr(rs,'"video_media_mp4_url":"','",')
+		    web_url = "https://www.smule.com"+str(hasil)
+		    url_parse1 = web_url.replace(":","%3A").replace("/","%2F")
+		    url_streams = ".tw_stream&url="
+		    if('e:' in str(video_media_mp4_url)): url_parse2 = video_media_mp4_url.replace(":","%3A").replace("+","%2B").replace("=","%3D")
+		    else: url_parse2 = media_url.replace(":","%3A").replace("+","%2B")
+		    if "video" not in type: cok = url_original+url_parse1+url_streams+url_parse2
+		    else: cok = url_original+url_parse1+url_streams+url_parse2
+		    return cok
+		except: print ("error")
+		
 def sendSmule(text):
     try:
         r = urllib.request.urlopen(text)
@@ -848,7 +868,7 @@ def sendSmule(text):
         if "video" not in type:
             cok = url_original+url_parse1+url_streams+url_parse2
         else:
-            cok = url_original+url_parse1+url_streams+url_parse2
+            cok = smuleLinkUrl(text)
         result = {
                 "status": "OKE COK__!",
                 "creator": "GEO",
@@ -873,6 +893,7 @@ def sendSmule(text):
     except:
         result = {"result": "Error info id Iine denmas_geo"}
         return(result)
+        
 def smule(urlink):
 	try:
 	    r = urllib.request.urlopen(urlink)
