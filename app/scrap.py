@@ -307,33 +307,33 @@ def listYt(query):
             "result": result
         }
         return(data)
-        
-def yt_search(query):
-    from youtube_searcher import search_youtube
-    data = search_youtube(query)
-    result = []
-    for anu in data["videos"]:
-        url = f'{anu["url"]}'
-        title = f'{anu["title"]}'
-        des = f'{anu["description"]}'
-        leng = f'{anu["length"]}'
-        img = f'https://i.ytimg.com/vi/{anu["videoId"]}/hq720.jpg'
-        videoid = f'{anu["videoId"]}'
-        jsonnya = {
-            "link": url,
-            "title": title,
-            "description": des,
-            "creat_at": leng,
-            "link_img": img,
-            "videoID": videoid
-        }
-        result.append(jsonnya)
-    hasil = {
+def yt_search(search):
+    try:
+        resulte = []
+        api = "https://michaelbelgium.me/ytconverter/search.php?q="+search+"&max_results=50"
+        data = json.loads(requests.get(api).text)
+        for anu in data["results"]:
+            link = anu["full_link"]
+            title = anu["title"]
+            canel = anu["channel"]
+            id = anu["id"]
+            resul = {
+                "link_url": link,
+                "title": title,
+                "channel_id": canel,
+                "idVideo": id
+            }
+            resulte.append(resul)
+        jsonya = {
+            "result": resulte,
             "creator": "GEO",
-            "status": "Okeeee.....!",
-            "result": result
-    }
-    return(hasil)
+            "status": "Is wokey",
+            "info": "Usage for len 50 list"
+        }
+        return(jsonya)
+    except:
+        data = {"result": "Error info id Iine denmas_geo"}
+        return(data)
 def newsSindo(query):
 	url = "https://berita-news.herokuapp.com/search/?q=%s"% (query)
 	rest =[]
