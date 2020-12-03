@@ -563,7 +563,7 @@ def dlStfa(url):
 def VideoX(search, page):
 	try:
 	   resulte =[]
-	   URL = "https://xvideos.com/?k=%s&p=%s"%(search,page)
+	   URL = "https://www.xvideos.com/?k=%s&p=%s"%(search,page)
 	   headers = {"user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:65.0) Gecko/20100101 Firefox/65.0"}
 	   resp = requests.get(URL, headers=headers)
 	   soup = BeautifulSoup(resp.content, "html5lib")
