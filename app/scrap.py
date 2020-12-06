@@ -46,6 +46,7 @@ path = {
     'two-valentines': '/2.0/effects/two-valentines',
     'snow-globe': '/2.0/effects/snow-globe'
 }
+cast = requests.Session()
 #=========================================================
 #===============
 def urlEncode(url, path, params=[]):
@@ -183,9 +184,36 @@ def sendSimisimi(query):
 		"status": "OKE COK___!"
     }
     return(result)
+
+def JooxRes(query):
+    try:
+        cast = requests.Session()
+        anu = json.loads(cast.get(f"https://mnazria.herokuapp.com/api/jooxnich?search={query}").text)
+        if anu["lirik"]:
+            lrik = str(anu["lirik"]).replace("[","").replace("]",": ")
+        else:
+            lrik = None
+        result = {
+            "creator": "GEO",
+            "status": "Oke 200",
+            "result": {
+                "result_mp4": anu["result"]["m4aUrl"],
+                "result_mp3": anu["result"]["mp3Url"],
+                "imgURL": anu["result"]["imgSrc"],
+                "myAlbum": anu["result"]["malbum"],
+                "myJudul": anu["result"]["msinger"],
+                "create_time": anu["result"]["public_time"],
+                "lirik": lrik
+            }
+        }
+        return(result)
+    except:
+        result = {"result": "Error info id Iine denmas_geo"}
+        return(result)
+        
 def Adzan(kota,th,bl,tgl):
     try:
-        anu = json.loads(requests.get(f"https://raw.githubusercontent.com/lakuapik/jadwalsholatorg/master/adzan/{kota}/{th}/{bl}/{tgl}.json").text)
+        anu = json.loads(cast.get(f"https://raw.githubusercontent.com/lakuapik/jadwalsholatorg/master/adzan/{kota}/{th}/{bl}/{tgl}.json").text)
         imsy = anu["imsyak"]
         subuh = anu["shubuh"]
         trbit = anu["terbit"]
@@ -295,18 +323,24 @@ def Quranlist(quran):
     except:
         result = {"result": "Error info id Iine denmas_geo"}
         return(result)
-def listYt(query):
-    from geo import search_youtube
-    data = search_youtube(query)
-    result = []
-    for anu in data["videos"]:
-        result.append(anu)
-        data = {
-            "creator": "GEO",
-            "status": "OKE___!",
-            "result": result
+def pafyDL(video_url):
+    try:
+        v = pafy.new(video_url, basic=True,gdata=False,callback=None)
+        resul = {
+            "result": {
+                "title": v.title,
+                "link_mp4": tinyurl(v.getbest().url),
+                "duration": v.duration,
+                "link_mp3": tinyurl(v.audiostreams[2].url)
+            },
+            "status": "oke boss.....",
+            "creator": "Alakadare"
         }
-        return(data)
+        return(resul)
+    except:
+        result = {"result": "Error info id Iine denmas_geo"}
+        return(result)
+        
 def yt_search(search):
     try:
         resulte = []
@@ -334,10 +368,11 @@ def yt_search(search):
     except:
         data = {"result": "Error info id Iine denmas_geo"}
         return(data)
+        
 def newsSindo(query):
 	url = "https://berita-news.herokuapp.com/search/?q=%s"% (query)
 	rest =[]
-	data = json.loads(requests.get(url).text)
+	data = json.loads(cast.get(url).text)
 	for anu in data["data"][:10]:
 		link = "%s" % anu['link']
 		judul = "%s" %anu['judul']
@@ -374,7 +409,7 @@ def randomimg(query):
 def artiName(nama):
 	try:
 		dsa ="http://primbon.com/arti_nama.php?nama1={}&proses=+Submit%21+".format(nama)
-		response = requests.get(dsa, headers=headers).text
+		response = cast.get(dsa, headers=headers).text
 		anu = getStr(response, '<b>ARTI NAMA</b><br><br>', '<TABLE>')
 		text=str(anu).replace("<b><i>",": ").replace("</i></b>","").replace("<br><br>","").replace(".<br><br>","").replace("memiliki arti:","")
 		result = {
@@ -419,7 +454,7 @@ def stafa(search):
 	try:
 		results = []
 		URL = f"https://m.stafabandt.site/mp3/{search}.html"
-		resp = requests.get(URL, headers=headers)
+		resp = cast.get(URL, headers=headers)
 		soup = BeautifulSoup(resp.content, "html5lib")
 		data = soup.select("a")
 		for b in data:
@@ -563,7 +598,7 @@ def dlStfa(url):
 def VideoX(search, page):
 	try:
 	   resulte =[]
-	   URL = "https://www.xvideos.com/?k=%s&p=%s"%(search,page)
+	   URL = "https://xnxx.uporbia.com/search/%s/%s"%(search,page)
 	   headers = {"user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:65.0) Gecko/20100101 Firefox/65.0"}
 	   resp = requests.get(URL, headers=headers)
 	   soup = BeautifulSoup(resp.content, "html5lib")
@@ -597,7 +632,7 @@ def VideoDL(page):
 	   headers = {"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:65.0) Gecko/20100101 Firefox/65.0"}
 	   r = urllib.request.urlopen(page)
 	   rs = r.read().decode();
-	   eh ="%s"% getStr(rs,"html5player.setVideoUrlHigh('","');")
+	   eh ="%s"% getStr(rs,"html5player.setVideoUrlLow('","');")
 	   e ="%s"% getStr(rs,"html5player.setVideoTitle('","');")
 	   fto ="%s"% getStr(rs,"html5player.setThumbUrl('","');")
 	   title = f"{e}"
@@ -792,7 +827,7 @@ def ingempa(detil):
 		
 def zodiak(search):
     try:
-        response = requests.get('https://www.fimela.com/zodiak/%s'%(search), headers=headers).text
+        response = cast.get('https://www.fimela.com/zodiak/%s'%(search), headers=headers).text
         Name = getStr(response, '<h5 class="zodiac__random__title">', '</h5>')
         Tgll = getStr(response, '<span class="zodiac__random__date">','</span>')
         Kesehatan = getStr(response, '<div class="zodiac__readpage__content"><p>', '</p>')
@@ -821,23 +856,23 @@ def zodiak(search):
         return(result)
         
 def smuleLinkUrl(url):
-    r = urllib.request.urlopen(url)
-    rs = r.read().decode()
-    try:
-        type = "%s"% getStr(rs,'"type":"','"')
-        url_original = "https://www.smule.com/redir?e=1&t={}.".format(int(time.time()))
-        hasil ="%s"% getStr(rs,'"web_url":"','",')
-        media_url ="%s"% getStr(rs,'"media_url":"','",')
-        video_media_mp4_url ="%s"% getStr(rs,'"video_media_mp4_url":"','",')
-        web_url = "https://www.smule.com"+str(hasil)
-        url_parse1 = web_url.replace(":","%3A").replace("/","%2F")
-        url_streams = ".tw_stream&url="
-        if('e:' in str(video_media_mp4_url)): url_parse2 = video_media_mp4_url.replace(":","%3A").replace("+","%2B").replace("=","%3D")
-        else: url_parse2 = media_url.replace(":","%3A").replace("+","%2B")
-        if "video" not in type: cok = url_original+url_parse1+url_streams+url_parse2
-        else: cok = url_original+url_parse1+url_streams+url_parse2
-        return cok
-    except: result = {"result": "Error info id Iine denmas_geo"}
+		r = urllib.request.urlopen(url)
+		rs = r.read().decode()
+		try:
+		    type = "%s"% getStr(rs,'"type":"','"')
+		    url_original = "https://www.smule.com/redir?e=1&t={}.".format(int(time.time()))
+		    hasil ="%s"% getStr(rs,'"web_url":"','",')
+		    media_url ="%s"% getStr(rs,'"media_url":"','",')
+		    video_media_mp4_url ="%s"% getStr(rs,'"video_media_mp4_url":"','",')
+		    web_url = "https://www.smule.com"+str(hasil)
+		    url_parse1 = web_url.replace(":","%3A").replace("/","%2F")
+		    url_streams = ".tw_stream&url="
+		    if('e:' in str(video_media_mp4_url)): url_parse2 = video_media_mp4_url.replace(":","%3A").replace("+","%2B").replace("=","%3D")
+		    else: url_parse2 = media_url.replace(":","%3A").replace("+","%2B")
+		    if "video" not in type: cok = url_original+url_parse1+url_streams+url_parse2
+		    else: cok = url_original+url_parse1+url_streams+url_parse2
+		    return cok
+		except: print ("error")
 		
 def sendSmule(text):
     try:
@@ -863,8 +898,9 @@ def sendSmule(text):
         url_streams = ".tw_stream&url="
         if('e:' in str(video_media_mp4_url)):
             url_parse2 = video_media_mp4_url.replace(":","%3A").replace("+","%2B").replace("=","%3D")
-        else: url_parse2 = media_url.replace(":","%3A").replace("+","%2B").replace("=","%3D")
-        if("audio" in str(type)):
+        else:
+            url_parse2 = media_url.replace(":","%3A").replace("+","%2B")
+        if "video" not in type:
             cok = url_original+url_parse1+url_streams+url_parse2
         else:
             cok = smuleLinkUrl(text)

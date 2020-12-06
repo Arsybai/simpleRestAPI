@@ -60,6 +60,19 @@ def rest_sendSimisimi():
 	this_query = request.args['text']
 	this_rest = scrap.sendSimisimi(this_query)
 	return json.dumps(this_rest, indent=4, sort_keys=True)
+	
+@app.route('/api/jooxV2',methods=['POST','GET'])
+def rest_JooxRes():
+	this_query = request.args['query']
+	this_rest = scrap.JooxRes(this_query)
+	return json.dumps(this_rest, indent=4, sort_keys=True)
+	
+@app.route('/api/ytdL',methods=['POST','GET'])
+def rest_pafyDL():
+	this_query = request.args['link']
+	this_rest = scrap.pafyDL(this_query)
+	return json.dumps(this_rest, indent=4, sort_keys=True)
+	
 @app.route('/stafa',methods=['POST','GET'])
 def rest_stafa():
 	this_query = request.args['search']
