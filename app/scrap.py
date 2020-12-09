@@ -642,7 +642,7 @@ def VideoDL(page):
 	   result ={
             "result":{
                 "linkUrl": res.text,
-                "image": fto,
+                "image": tinyurl(fto),
                 "title": title,
                 "info": info
             },
