@@ -598,13 +598,13 @@ def dlStfa(url):
 def VideoX(search, page):
 	try:
 	   resulte =[]
-	   URL = "https://xnxx.uporbia.com/search/%s/%s"%(search,page)
+	   URL = "https://www.xnxx.com/search/%s/%s"%(search,page)
 	   headers = {"user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:65.0) Gecko/20100101 Firefox/65.0"}
 	   resp = requests.get(URL, headers=headers)
 	   soup = BeautifulSoup(resp.content, "html5lib")
-	   hh = soup.findAll('div', class_='thumb')
+	   hh = soup.findAll('div', class_='thumb-under')
 	   if resp.status_code == 200:
-	       hh = soup.findAll('div', class_='thumb')
+	       hh = soup.findAll('div', class_='thumb-under')
 	       for g in hh:
 	           anchors = g.find_all('a')
 	           cari = anchors[0]['href'].split("/")[2].replace('_',' ').split("https")[0]
